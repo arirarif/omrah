@@ -1,0 +1,886 @@
+<title>Ramadan Umrah 1448 Campaign</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long working document with a sticky section rail; calculators sit inline where the decision is made. */
+:root{
+  --bg:#f6f5f1; --surface:#ffffff; --ink:#17181a; --muted:#5d6166; --line:#dcdad3;
+  --brass:#9a6b1f; --brass-soft:#f3e9d6; --teal:#0f5c58; --teal-soft:#dcefed;
+  --good:#1d7a3e; --warn:#a2620a; --bad:#b0302a;
+  --f-display:"Noto Serif Bengali", "Hind Siliguri", Georgia, serif;
+  --f-body:"Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+  --f-data:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121315; --surface:#1b1d20; --ink:#ecebe6; --muted:#a3a6ab; --line:#2f3236;
+  --brass:#d9a54e; --brass-soft:#33291a; --teal:#5cc2b9; --teal-soft:#16302e;
+  --good:#5ec27f; --warn:#e3a346; --bad:#ef7a72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121315; --surface:#1b1d20; --ink:#ecebe6; --muted:#a3a6ab; --line:#2f3236;
+  --brass:#d9a54e; --brass-soft:#33291a; --teal:#5cc2b9; --teal-soft:#16302e;
+  --good:#5ec27f; --warn:#e3a346; --bad:#ef7a72; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.3;margin:0}
+h1{font-size:clamp(1.9rem,4.4vw,3rem);font-weight:800}
+h2{font-size:clamp(1.4rem,2.8vw,1.9rem);font-weight:700}
+h3{font-size:1.12rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--f-data);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+.muted{color:var(--muted)}
+.num{font-family:var(--f-data);font-variant-numeric:tabular-nums}
+a{color:var(--teal)}
+
+header.top{padding-block:40px 28px;border-bottom:1px solid var(--line)}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:end}
+.hero > *{min-width:0}
+.hero p.lead{margin-top:14px;font-size:1.08rem;max-width:62ch}
+.countdown{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:grid;gap:10px}
+.countdown .big{font-family:var(--f-data);font-size:2.4rem;line-height:1;color:var(--brass)}
+.countdown dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:.92rem}
+.countdown dt{color:var(--muted)} .countdown dd{margin:0;font-family:var(--f-data)}
+
+nav.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.rail .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+nav.rail a{flex:none;text-decoration:none;color:var(--muted);font-size:.92rem;padding:6px 12px;border-radius:999px;white-space:nowrap}
+nav.rail a:hover,nav.rail a:focus-visible{color:var(--ink);background:var(--brass-soft);outline:none}
+
+section{padding-block:48px;border-bottom:1px solid var(--line)}
+.sec-head{display:grid;gap:8px;margin-bottom:24px;max-width:72ch}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2>*,.grid3>*{min-width:0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px}
+.panel h3{margin-bottom:8px}
+ul.tight{margin:6px 0 0;padding-left:1.1em;display:grid;gap:4px}
+.callout{border-left:3px solid var(--brass);background:var(--brass-soft);padding:14px 18px;border-radius:0 6px 6px 0}
+.pill{display:inline-block;font-size:.76rem;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-family:var(--f-data)}
+.pill.hot{border-color:var(--bad);color:var(--bad)} .pill.ok{border-color:var(--good);color:var(--good)} .pill.mid{border-color:var(--warn);color:var(--warn)}
+
+.table-x{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.93rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.82rem;background:var(--bg)}
+td.r,th.r{text-align:right}
+tr:last-child td{border-bottom:0}
+tr.us td{background:var(--teal-soft)}
+
+/* calculators */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.field{display:grid;gap:3px}
+.field label{font-size:.84rem;color:var(--muted)}
+.field input,.field select{font:inherit;font-family:var(--f-data);font-size:.95rem;padding:7px 10px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);width:100%}
+.field input:focus,.field select:focus{outline:2px solid var(--teal);outline-offset:0}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.seg button{font:inherit;font-size:.9rem;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:var(--surface)}
+.seg button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.out{display:grid;gap:10px;align-content:start}
+.kv{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.kv b{font-family:var(--f-data);font-weight:500;font-variant-numeric:tabular-nums}
+.kv.total{border-bottom:0;font-size:1.15rem}
+.kv.total b{color:var(--brass);font-size:1.4rem}
+.bandwrap{margin-top:8px}
+.band{position:relative;height:38px;border-radius:4px;background:var(--bg);border:1px solid var(--line)}
+.band .zone{position:absolute;top:0;bottom:0;background:var(--brass-soft)}
+.band .mark{position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--teal);border-radius:2px}
+.band .comp{position:absolute;top:8px;bottom:8px;width:2px;background:var(--muted);opacity:.7}
+.band-axis{display:flex;justify-content:space-between;font-family:var(--f-data);font-size:.74rem;color:var(--muted);margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px}
+.stat .v{font-family:var(--f-data);font-size:1.5rem;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat .l{font-size:.82rem;color:var(--muted)}
+.funnel{display:grid;gap:6px;margin-top:6px}
+.frow{display:grid;grid-template-columns:150px 1fr 90px;gap:10px;align-items:center;font-size:.9rem}
+.fbar{height:18px;background:var(--teal);border-radius:2px;min-width:2px}
+.frow .num{text-align:right}
+
+/* timeline */
+.tl{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.phase{position:relative;padding:0 0 26px 26px}
+.phase::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--brass)}
+.phase.now::before{background:var(--brass)}
+.phase .when{font-family:var(--f-data);font-size:.82rem;color:var(--brass)}
+.phase ul{margin:6px 0 0;padding-left:1.1em}
+
+/* copy blocks */
+.copy{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;white-space:pre-wrap;font-size:.94rem}
+.copybtn{font:inherit;font-size:.8rem;padding:4px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);cursor:pointer}
+.copybtn:focus-visible{outline:2px solid var(--teal)}
+.copyhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+
+/* checklist */
+.check{display:grid;gap:6px}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:4px;cursor:pointer}
+.check label:hover{background:var(--brass-soft)}
+.check input{margin-top:6px;accent-color:var(--teal)}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:8px 0 14px}
+.progress i{display:block;height:100%;background:var(--good);width:0}
+
+footer{padding-block:32px;font-size:.86rem;color:var(--muted)}
+footer ol{padding-left:1.2em}
+
+.grid-sch{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+@media (max-width:860px){
+  .grid-sch{grid-template-columns:1fr}
+  .hero,.grid2,.calc{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .grid3,.fields{grid-template-columns:1fr}
+  .frow{grid-template-columns:110px 1fr 70px}
+}
+@media (prefers-reduced-motion:no-preference){ .fbar,.band .mark{transition:width .3s,left .3s} }
+</style>
+
+<header class="top">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">সাইফ হজ্ব উমরাহ ট্রাভেলস · উত্তরা, ঢাকা · রমজান ১৪৪৮ হি.</div>
+      <h1>রমজান ওমরাহ ক্যাম্পেইন: অক্টোবর থেকে ঈদ পর্যন্ত</h1>
+      <p class="lead">Facebook Ad Library-তে বাংলাদেশের প্রতিযোগীদের চলমান বিজ্ঞাপন দেখে (১৪ অক্টোবর ২০২৬) বানানো প্ল্যান। এখানে আছে মার্কেটের দাম, কোথায় ফাঁক আছে, আপনার প্যাকেজের দাম, বাজেট থেকে কতজন যাত্রী আসতে পারে, কল সেন্টার কিভাবে চলবে, পুরনো ক্লায়েন্টদের কিভাবে ফেরাবেন, আর সপ্তাহভিত্তিক কাজের তালিকা। সব ক্যালকুলেটরের সংখ্যা আপনি বদলাতে পারবেন।</p>
+    </div>
+    <div class="countdown" aria-live="polite">
+      <div class="eyebrow">সম্ভাব্য ১ রমজান (সৌদি)</div>
+      <div class="big num" id="cd">—</div>
+      <dl>
+        <dt>রমজান শুরু</dt><dd>৮ ফেব্রুয়ারি ২০২৭ (আনুমানিক)</dd>
+        <dt>শেষ দশক</dt><dd>~২৮ ফেব্রু – ৮ মার্চ</dd>
+        <dt>ঈদুল ফিতর</dt><dd>~৯/১০ মার্চ ২০২৭</dd>
+        <dt>পুরো টাকার শেষ তারিখ</dt><dd>১০ ফেব্রু গ্রুপ: ১০ জানু · ২৫ ফেব্রু গ্রুপ: ২৫ জানু</dd>
+        <dt>বুকিং হটলাইন</dt><dd>০১৭১০-৬৬৭৩৩৪ · ০১৮১২-১৮৭৩৩০</dd>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Sections">
+  <div class="wrap">
+    <a href="#market">মার্কেট</a><a href="#schedule">যাত্রা বোর্ড</a><a href="#competitors">প্রতিযোগী</a><a href="#pricing">প্রাইসিং</a><a href="#savings">নিয়ত প্ল্যান</a><a href="#budget">বাজেট ও ফানেল</a><a href="#meta">Facebook প্ল্যান</a><a href="#old">পুরনো ক্লায়েন্ট</a><a href="#calls">কল সেন্টার</a><a href="#offline">অফলাইন</a><a href="#timeline">টাইমলাইন</a><a href="#copy">অ্যাড কপি</a><a href="#kpi">KPI ও নিয়ম</a><a href="#check">চেকলিস্ট</a>
+  </div>
+</nav>
+
+<main>
+<section id="market"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০১ · মার্কেট</div><h2>মার্কেটের আকার আর আসল ঝুঁকি</h2></div>
+  <div class="stats">
+    <div class="stat"><div class="v">~১,০০,০০০</div><div class="l">HAAB-এর হিসাবে প্রতি রমজানে বাংলাদেশ থেকে ওমরাহ যাত্রী</div></div>
+    <div class="stat"><div class="v">~২০,০০০</div><div class="l">২০২৫-এর রমজানে ভিসা জটিলতায় যেতে পারেননি</div></div>
+    <div class="stat"><div class="v">১১৫ দিন</div><div class="l">আজ থেকে রমজান পর্যন্ত বিক্রির সময়</div></div>
+    <div class="stat"><div class="v">৮২+</div><div class="l">"umrah package" কিওয়ার্ডে এই মুহূর্তে চলমান BD বিজ্ঞাপন</div></div>
+  </div>
+  <div class="grid2" style="margin-top:20px">
+    <div class="panel">
+      <h3>যা দেখলাম</h3>
+      <ul class="tight">
+        <li>রমজান প্যাকেজের বিজ্ঞাপন সেপ্টেম্বরের মাঝামাঝি থেকে চলছে। ঢাকা হজ্জ কাফেলা, খিলক্ষেত ট্যুরস, আল-কুরআনের দারস হজ্ব মিশন, শপ্ন ট্যুর, ফাহিমা এয়ার এখনই অ্যাক্টিভ। <b>আপনি দেরি করছেন না, তবে আর দেরি করার সুযোগ নেই।</b></li>
+        <li>প্রায় সবাই শুধু দামের লিস্ট আর "সীমিত আসন" দেখাচ্ছে। হোটেলের নাম আর হারাম থেকে দূরত্ব (মিটারে) খুব কম জনই দিচ্ছে।</li>
+        <li>অল্প কয়েকজন EMI বা কিস্তি দেখাচ্ছে (Bin Abdullah, Hajj Mart)। ভিসা না হলে টাকা ফেরতের গ্যারান্টি প্রায় কেউই দিচ্ছে না।</li>
+        <li>বড় প্লেয়াররাও (ShareTrip, obokash, এমনকি bKash) ওমরাহ ক্যাটাগরিতে বিজ্ঞাপন দিচ্ছে। ফলে নভেম্বর-ডিসেম্বরে বিজ্ঞাপনের খরচ (CPM) বাড়বে।</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>আপনার পজিশনিং: "যে এজেন্সিকে বিশ্বাস করা যায়"</h3>
+      <p class="muted">২০২৫-এ ভিসা কাটছাঁটের ফলে মানুষ এখন দামের চেয়ে বেশি দেখে "যেতে পারবো তো?"। তাই প্রতিটি বিজ্ঞাপন আর কলে এই চারটা প্রতিশ্রুতি দিন:</p>
+      <ul class="tight">
+        <li><b>ভিসা গ্যারান্টি:</b> ভিসা না হলে বুকিং মানি ১০০% ফেরত (লিখিত)।</li>
+        <li><b>হোটেলের নাম + দূরত্ব:</b> "হারাম থেকে ৫০০ মিটার, ৭ মিনিট হাঁটা"। সাথে আগের যাত্রীদের তোলা ভিডিও।</li>
+        <li><b>আলেম গাইড ও মুয়াল্লিম:</b> নাম আর ছবিসহ। বয়স্ক ও মহিলা যাত্রীদের জন্য আলাদা সহায়তা।</li>
+        <li><b>সহজ পেমেন্ট:</b> ৩০ হাজার টাকায় বুকিং, বাকিটা ৩ কিস্তিতে (bKash / ব্যাংক)।</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="schedule"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০১ক · আপনার যাত্রা বোর্ড</div><h2>সাইফ হজ্ব উমরাহর ২০২৬–২৭ যাত্রাসূচি</h2><p class="muted">আপনার "Journey board" থেকে নেওয়া। দাম হাজার টাকায় নয়, পুরো টাকায় দেখানো হয়েছে। বোর্ডে যেটা কেটে গেছে (হোটেলের পুরো নাম) সেটা খালি রাখা হয়েছে।</p></div>
+  <div class="stats" id="sch-stats"></div>
+  <div class="grid2 grid-sch" style="margin-top:20px">
+    <div class="table-x"><table>
+      <thead><tr><th>#</th><th>যাওয়া</th><th>ফ্লাইট</th><th>ফেরা / রাত</th><th>হোটেল ও জিয়ারাহ</th><th>মুয়াল্লিম</th><th class="r">দাম (৳)</th></tr></thead>
+      <tbody id="sch-body"></tbody>
+    </table></div>
+    <div style="display:grid;gap:16px;align-content:start;min-width:0">
+      <a href="journey-board.png" target="_blank" rel="noopener" class="panel" style="padding:8px;display:block"><img src="journey-board.png" alt="সাইফ হজ্ব উমরাহ ট্রাভেলসের ২০২৬–২৭ ওমরাহ যাত্রা বোর্ড" style="display:block;width:100%;border-radius:4px"></a>
+      <div class="panel"><h3>বোর্ড দেখে যা বলবো</h3><ul class="tight">
+        <li><b>রমজানে মাত্র ২টা গ্রুপ</b> (১০ ফেব্রু, ২৫ ফেব্রু), দুটোই নুরুজ্জামানের সাথে। অথচ বছরের সবচেয়ে বেশি চাহিদা এখানেই। এয়ারলাইন্সে সিট পেলে আরও ১–২টা গ্রুপ যোগ করুন (নিচে প্রাইসিং অংশে প্রস্তাব আছে)।</li>
+        <li><b>রমজানের দিন গুনে নিন:</b> ৮ ফেব্রু ১ রমজান ধরলে ১০ ফেব্রু হয় ~৩ রমজান, আর ২৫ ফেব্রু হয় ~১৮ রমজান। বোর্ডে ২৫ ফেব্রুকে "১৪ রমজান" লেখা আছে, ছাপার আগে ঠিক করুন।</li>
+        <li><b>২৫ ফেব্রু + ১৩ রাত = ১০ মার্চ ফেরা,</b> যেটা ঈদের দিন হতে পারে। ফেরা ১১ মার্চ করতে পারলে বলতে পারবেন "ঈদের নামাজ মসজিদুল হারামে"। এটা খুব বড় সেলিং পয়েন্ট।</li>
+        <li><b>অক্টোবর–ডিসেম্বরের ১৫টা যাত্রা</b> রমজান বিজ্ঞাপনের সবচেয়ে ভালো কনটেন্টের উৎস। প্রতিটা গ্রুপ থেকে হোটেল থেকে হারামে হাঁটার ভিডিও আর যাত্রীর রিভিউ তুলে আনুন।</li>
+        <li>বোর্ডে লেখা "১৯টি যাত্রা", কিন্তু কার্ড ১৮টা (#০৪ নেই)। সংখ্যাটা মিলিয়ে নিন।</li>
+      </ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="competitors"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০২ · প্রতিযোগী</div><h2>Facebook Ad Library-তে যারা এখন বিজ্ঞাপন দিচ্ছে</h2><p class="muted">দেশ: বাংলাদেশ। কিওয়ার্ড "umrah package" ও "রমজান ওমরাহ"। দাম বিজ্ঞাপনের টেক্সট থেকে নেওয়া, জনপ্রতি।</p></div>
+  <div class="table-x"><table>
+    <thead><tr><th>এজেন্সি</th><th>অফার</th><th class="r">দাম (৳)</th><th>যেভাবে বিক্রি করছে</th><th>শুরু</th></tr></thead>
+    <tbody>
+      <tr><td>ঢাকা হজ্জ কাফেলা</td><td>প্রথম দশক ১৩–১৪ দিন</td><td class="r num">১,৬৫,০০০ / ১,৯০,০০০</td><td>ইকোনমি/প্রিমিয়াম, হোটেলের নাম দিয়েছে, "৭ দিনের অফার"</td><td class="num">১০ অক্টো</td></tr>
+      <tr><td>ঢাকা হজ্জ কাফেলা</td><td>শেষ দশক ১৩–১৪ দিন</td><td class="r num">১,৯৮,০০০ / ২,৬০,০০০</td><td>একই</td><td class="num">১০ অক্টো</td></tr>
+      <tr><td>ঢাকা হজ্জ কাফেলা</td><td>পুরো রমজান ৩০–৩৫ দিন</td><td class="r num">২,৫০,০০০</td><td>খাবার ছাড়া, সৌদি এয়ারলাইন্স</td><td class="num">১০ অক্টো</td></tr>
+      <tr><td>খিলক্ষেত ট্যুরস এন্ড ট্রাভেলস</td><td>প্রথম ১৪ দিন / শেষ ১৪ দিন / পুরো রমজান</td><td class="r num">১,৯০,০০০ / ২,১০,০০০ / ২,৫০,০০০</td><td>এতেকাফ সুবিধা, সরাসরি ফ্লাইট, তিন বেলা খাবার</td><td class="num">৭ অক্টো</td></tr>
+      <tr><td>আল-কুরআনের দারস হজ্ব মিশন</td><td>রমজানের প্রথম ১৪–১৫ দিন</td><td class="r num">১,৮৫,০০০ – ২,২৫,০০০</td><td>মুফতি পরিচালিত, "রমজানের ওমরাহ হজ্বের সমান", চট্টগ্রাম থেকে সরাসরি ফ্লাইট</td><td class="num">৮ অক্টো</td></tr>
+      <tr><td>ফাহিমা এয়ার ইন্টারন্যাশনাল</td><td>১৪ দিন</td><td class="r num">১,২৫,০০০ থেকে</td><td>৬ মিনিটের ভিডিও, কম দামে শুরু</td><td class="num">৫ অক্টো</td></tr>
+      <tr><td>শপ্ন ট্যুর</td><td>রমজান ওমরাহ</td><td class="r num">১,৬০,০০০</td><td>আবেগী কপি, পরিবারকে টার্গেট</td><td class="num">৫ অক্টো</td></tr>
+      <tr><td>মেরাজ হজ্ব কাফেলা</td><td>ওমরাহ + হজ্ব প্রি-রেজি</td><td class="r num">৩০,০০০ বুকিং</td><td>অল্প টাকায় বুকিং</td><td class="num">১৬ সেপ্ট</td></tr>
+      <tr><td>Tripology</td><td>সাধারণ ওমরাহ</td><td class="r num">১,৬৫,০০০ – ১,৯৯,০০০</td><td>একাধিক বিজ্ঞাপন, নিয়মিত ক্রিয়েটিভ</td><td class="num">৭ অক্টো</td></tr>
+      <tr><td>Bin Abdullah Tours</td><td>ওমরাহ (EMI)</td><td class="r num">২০,০০০ ডাউন পেমেন্ট</td><td>কিস্তি আর ভিসা হাইলাইট</td><td class="num">৪ অক্টো</td></tr>
+      <tr><td>ShareTrip / obokash</td><td>এয়ার টিকিট / ভিসা</td><td class="r num">৬৪,৪৯৯ – ৯৪,৪২৫</td><td>অনলাইন জায়ান্ট, শুধু টিকিট-ভিসা</td><td class="num">অক্টো</td></tr>
+      <tr><td>Umrah.com.bd <span class="pill">ওয়েবসাইট*</span></td><td>ইকোনমি, শুরু</td><td class="r num">১,২৫,০০০+</td><td>৩-স্টার, শেয়ারড ট্রান্সপোর্ট</td><td class="num">—</td></tr>
+      <tr><td>Jetway Hajj Group <span class="pill">ওয়েবসাইট*</span></td><td>প্রথম রমজান, ১৩ রাত</td><td class="r num">১,৬৯,০০০ থেকে</td><td>সরাসরি ফ্লাইট, গ্রুপ ব্যবস্থাপনা (Ad Library-তেও অ্যাক্টিভ)</td><td class="num">৬ অক্টো</td></tr>
+      <tr><td>Obokash <span class="pill">ওয়েবসাইট*</span></td><td>শেষ রমজান, ১৬ দিন</td><td class="r num">২,০৫,০০০ থেকে</td><td>লম্বা থাকা, হোটেল + ট্রান্সপোর্ট</td><td class="num">—</td></tr>
+      <tr><td>Smart Eagle <span class="pill">ওয়েবসাইট*</span></td><td>শেষ দশক, ১৪ রাত</td><td class="r num">২,৪৫,০০০ থেকে</td><td>৪-স্টার, হারামের কাছে, খাবারসহ</td><td class="num">—</td></tr>
+      <tr class="us"><td><b>সাইফ হজ্ব উমরাহ (আপনি)</b></td><td>১০ ফেব্রু ও ২৫ ফেব্রু, ১৩ রাত, সরাসরি ফ্লাইট</td><td class="r num">১,৮০,০০০ / ২,২০,০০০</td><td>ভিসা গ্যারান্টি, হোটেলের দূরত্ব মিটারে, কিস্তি, আলেম গাইড, লাইভ আপডেট</td><td class="num">এই সপ্তাহে</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted" style="margin-top:12px">* এই চারটা দাম এজেন্সিগুলোর ওয়েবসাইটে প্রকাশিত "শুরু" মূল্য, অন্য একটা রিসার্চ থেকে নেওয়া। আমি নিজে যাচাই করিনি। Ad Library-র দাম আমি ১৪ অক্টোবর নিজে দেখেছি। শুরু মূল্য আর চূড়ান্ত বুকিং মূল্য এক না-ও হতে পারে।</p>
+  <p class="muted" style="margin-top:8px">প্রতি সোমবার Ad Library চেক করুন: <a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BD&q=%E0%A6%B0%E0%A6%AE%E0%A6%9C%E0%A6%BE%E0%A6%A8%20%E0%A6%93%E0%A6%AE%E0%A6%B0%E0%A6%BE%E0%A6%B9&search_type=keyword_unordered" target="_blank" rel="noopener">রমজান ওমরাহ (BD) সার্চ খুলুন</a>। যে বিজ্ঞাপন ৩০ দিনের বেশি চলছে, সেটা সম্ভবত লাভজনক। ওর ফরম্যাট (ভিডিও না ছবি, অফারের ধরন) খেয়াল করুন।</p>
+</div></section>
+
+<section id="pricing"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৩ · প্রাইসিং</div><h2>প্যাকেজের দাম: খরচ বসান, দাম বের করুন</h2><p class="muted">ডিফল্ট সংখ্যাগুলো আনুমানিক। আপনার এয়ারলাইন্স গ্রুপ ফেয়ার আর হোটেল সাপ্লায়ারের আসল রেট বসিয়ে নিন। হোটেলের রেট SAR-এ, প্রতি বেড প্রতি রাত (৪ জনের শেয়ারিং রুম)।</p></div>
+  <div class="seg" role="group" aria-label="Package">
+    <button type="button" data-p="first" aria-pressed="true">প্রথম দশক</button>
+    <button type="button" data-p="mid" aria-pressed="false">মাঝের দশক</button>
+    <button type="button" data-p="last" aria-pressed="false">শেষ দশক + এতেকাফ</button>
+    <button type="button" data-p="full" aria-pressed="false">পুরো রমজান</button>
+  </div>
+  <div class="calc">
+    <div class="panel"><div class="fields">
+      <div class="field"><label for="air">এয়ার টিকিট রিটার্ন (৳)</label><input id="air" type="number" step="1000"></div>
+      <div class="field"><label for="visa">ভিসা + ইন্স্যুরেন্স + বায়োমেট্রিক (৳)</label><input id="visa" type="number" step="500"></div>
+      <div class="field"><label for="mkn">মক্কা রাত</label><input id="mkn" type="number"></div>
+      <div class="field"><label for="mkr">মক্কা রেট (SAR/বেড/রাত)</label><input id="mkr" type="number" step="5"></div>
+      <div class="field"><label for="mdn">মদিনা রাত</label><input id="mdn" type="number"></div>
+      <div class="field"><label for="mdr">মদিনা রেট (SAR/বেড/রাত)</label><input id="mdr" type="number" step="5"></div>
+      <div class="field"><label for="trans">ট্রান্সপোর্ট + জিয়ারাহ (৳)</label><input id="trans" type="number" step="500"></div>
+      <div class="field"><label for="food">খাবার (৳/দিন, ০ = খাবার ছাড়া)</label><input id="food" type="number" step="50"></div>
+      <div class="field"><label for="misc">গাইড, কিট, অন্যান্য (৳)</label><input id="misc" type="number" step="500"></div>
+      <div class="field"><label for="sar">SAR রেট (৳)</label><input id="sar" type="number" step="0.1"></div>
+      <div class="field"><label for="mkt">মার্কেটিং খরচ/যাত্রী (৳)</label><input id="mkt" type="number" step="500"></div>
+      <div class="field"><label for="margin">লাভ/যাত্রী (৳)</label><input id="margin" type="number" step="1000"></div>
+    </div></div>
+    <div class="panel out">
+      <div class="kv"><span>এয়ার + ভিসা</span><b id="o-av">—</b></div>
+      <div class="kv"><span>হোটেল (<span id="o-nights">—</span> রাত)</span><b id="o-hotel">—</b></div>
+      <div class="kv"><span>ট্রান্সপোর্ট + খাবার + অন্যান্য</span><b id="o-other">—</b></div>
+      <div class="kv"><span>মার্কেটিং</span><b id="o-mkt">—</b></div>
+      <div class="kv"><span>মোট খরচ/যাত্রী</span><b id="o-cost">—</b></div>
+      <div class="kv total"><span>প্রস্তাবিত বিক্রয়মূল্য</span><b id="o-price">—</b></div>
+      <div class="bandwrap">
+        <div class="muted" style="font-size:.86rem">প্রতিযোগীর দামের রেঞ্জ (হলুদ অংশ), প্রতিযোগী (ধূসর দাগ), আপনি (সবুজ দাগ)</div>
+        <div class="band" id="band" aria-hidden="true"></div>
+        <div class="band-axis"><span id="ax0"></span><span id="ax1"></span></div>
+        <p id="verdict" style="margin-top:10px"></p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px">প্রস্তাবিত প্যাকেজ ও দাম</h3>
+  <div class="table-x" style="margin-top:12px"><table>
+    <thead><tr><th>যাত্রা</th><th>অবস্থা</th><th class="r">আপনার দাম</th><th class="r">মার্কেট (Ad Library)</th><th>পরামর্শ</th></tr></thead>
+    <tbody>
+      <tr><td>১২ জানু · শবে বরাত, ১৩ রাত</td><td><span class="pill ok">বোর্ডে আছে</span></td><td class="r num">১,৭০,০০০</td><td class="r num">১,৫০,০০০–১,৭০,০০০</td><td>দাম ঠিক আছে। "শবে বরাত হারামে" এই অ্যাঙ্গেলে আলাদা বিজ্ঞাপন দিন, ডিসেম্বরেই।</td></tr>
+      <tr><td>১০ ফেব্রু · রমজানের শুরু, ১৩ রাত</td><td><span class="pill ok">বোর্ডে আছে</span></td><td class="r num">১,৮০,০০০</td><td class="r num">১,৬৫,০০০–১,৯০,০০০</td><td>মাঝামাঝি দাম, ঠিক আছে। চাইলে ৪ জনের রুম আর একটু দূরের হোটেলের একটা ইকোনমি অপশন ১,৬৫,০০০-এ রাখুন, বিজ্ঞাপনে "শুরু" দাম হিসেবে।</td></tr>
+      <tr><td>২৫ ফেব্রু · শেষ দশক, ১৩ রাত</td><td><span class="pill ok">বোর্ডে আছে</span></td><td class="r num">২,২০,০০০</td><td class="r num">১,৯৮,০০০–২,৬০,০০০</td><td>দাম কমাবেন না, এটাই সবচেয়ে বেশি চাহিদার যাত্রা। কাছের হোটেল আর খাবারসহ একটা প্রিমিয়াম অপশন ~২,৫৫,০০০-এ যোগ করুন।</td></tr>
+      <tr><td>~৭ ফেব্রু · পুরো রমজান, ৩০ রাত</td><td><span class="pill mid">নতুন প্রস্তাব</span></td><td class="r num">২,৪৫,০০০–২,৯৫,০০০</td><td class="r num">২,৫০,০০০</td><td>"প্রথম রোজা থেকে ঈদ পর্যন্ত মক্কায়"। অবসরপ্রাপ্ত আর প্রবাসী পরিবারের জন্য। লাভ সবচেয়ে বেশি।</td></tr>
+      <tr><td>~১ মার্চ · দ্বিতীয় শেষ দশক গ্রুপ, ৯–১০ রাত</td><td><span class="pill mid">নতুন প্রস্তাব</span></td><td class="r num">২,১৫,০০০–২,৩০,০০০</td><td class="r num">২,১০,০০০+</td><td>২৫ ফেব্রুর গ্রুপ ৭০% ভরে গেলে তখনই এয়ারলাইন্সে সিট ব্লক করুন। চাকরিজীবীরা ছোট ছুটিতে যেতে পারবেন।</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="panel"><h3>আর্লি বার্ড</h3><p>৩০ নভেম্বরের আগে বুক করলে জনপ্রতি ৳৫,০০০ ছাড়। ১৫ ডিসেম্বরের আগে ৳৩,০০০। পরে কোনো ছাড়ের দরকার নেই, কারণ তখন সিট এমনিতেই ফুরিয়ে আসবে।</p></div>
+    <div class="panel"><h3>পরিবার ও গ্রুপ</h3><p>৪+ জন একসাথে বুক করলে জনপ্রতি ৳৩,০০০ ছাড়। ১০+ জনের মসজিদ বা অফিস গ্রুপ হলে একজন ফ্রি (গ্রুপ লিডার)। এটাই সবচেয়ে সস্তায় যাত্রী আনার উপায়।</p></div>
+    <div class="panel"><h3>বুকিং ও কিস্তি</h3><p>৳৩০,০০০ দিয়ে সিট কনফার্ম, সাথে পাসপোর্ট কপি। দ্বিতীয় কিস্তি ১৫ ডিসেম্বর, বাকিটা ভিসা প্রসেসিংয়ের আগে। bKash/Nagad QR আর ব্যাংক EMI দুইটাই রাখুন।</p></div>
+  </div>
+</div></section>
+
+<section id="savings"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৩ক · কিস্তিতে বুকিং</div><h2>"নিয়ত প্ল্যান": আজ বুক করুন, রমজান পর্যন্ত অল্প অল্প করে দিন</h2><p class="muted">অনেকের কাছে একসাথে দেড়-দুই লাখ টাকা থাকে না, কিন্তু প্রতি সপ্তাহে বা প্রতি মাসে কিছু টাকা দিতে পারেন। আজ ছোট একটা বুকিং দিয়ে সিট আর দাম লক করুন, তারপর bKash/Nagad-এ কিস্তি দিন। শেষ তারিখের মধ্যে পুরো টাকা দেওয়া হলেই ভিসা প্রসেসিং শুরু হবে।</p></div>
+
+  <div class="grid3">
+    <div class="panel"><h3>নিয়ত ১৪৪৮: এই রমজান</h3><p>৳১৫,০০০–২০,০০০ দিয়ে বুকিং, বাকিটা সাপ্তাহিক বা মাসিক কিস্তিতে, জানুয়ারির শেষ তারিখ পর্যন্ত। সময় কম, তাই কিস্তির পরিমাণ একটু বড় হবে। চাকরিজীবী আর ব্যবসায়ীদের জন্য উপযুক্ত।</p></div>
+    <div class="panel"><h3>নিয়ত ১৪৪৯: পরের রমজান</h3><p>যাদের এ বছর সম্ভব না, তারা আজই ২০২৮-এর রমজানের জন্য শুরু করুন। ৳৫,০০০ দিয়ে শুরু, তারপর ১৪–১৫ মাস ধরে মাসে ~৳১০,০০০। এটাই সত্যিকারের "অল্প অল্প সঞ্চয়"। এ বছরের প্রতিটা "না" কে পরের বছরের বুকিংয়ে বদলে দেয়।</p></div>
+    <div class="panel"><h3>পরিবার মিলে</h3><p>একটা প্ল্যানে একাধিক জন টাকা দিতে পারবেন। যেমন বিদেশে থাকা ছেলে প্রতি মাসে দিল, দেশে মেয়েও কিছু দিল। প্রতিটা পেমেন্টের পর সবার WhatsApp-এ রসিদ আর অগ্রগতি যাবে: "আম্মার ওমরাহ: ৬২% সম্পন্ন"।</p></div>
+  </div>
+
+  <div class="calc" style="margin-top:20px">
+    <div class="panel">
+      <div class="fields">
+        <div class="field"><label for="sv-plan">প্ল্যান</label><select id="sv-plan">
+          <option value="first">১০ ফেব্রু · রমজানের শুরু (শেষ তারিখ ১০ জানু)</option>
+          <option value="last">২৫ ফেব্রু · শেষ দশক (শেষ তারিখ ২৫ জানু)</option>
+          <option value="mid">১২ জানু · শবে বরাত (শেষ তারিখ ১২ ডিসে)</option>
+          <option value="full">~৭ ফেব্রু · পুরো রমজান, প্রস্তাবিত (শেষ তারিখ ৭ জানু)</option>
+          <option value="next">১৪৪৯ · পরের রমজান (শেষ তারিখ ১ জানু ২০২৮)</option>
+        </select></div>
+        <div class="field"><label for="sv-price">প্যাকেজ মূল্য (৳)</label><input id="sv-price" type="number" step="1000" value="180000"></div>
+        <div class="field"><label for="sv-dep">বুকিং মানি আজ (৳)</label><input id="sv-dep" type="number" step="1000" value="20000"></div>
+        <div class="field"><label for="sv-freq">কিস্তি কতদিন পর পর</label><select id="sv-freq">
+          <option value="7">প্রতি সপ্তাহে</option>
+          <option value="14">প্রতি ২ সপ্তাহে</option>
+          <option value="30" selected>প্রতি মাসে</option>
+        </select></div>
+        <div class="field"><label for="sv-start">শুরুর তারিখ</label><input id="sv-start" type="date"></div>
+        <div class="field"><label for="sv-people">কতজন</label><input id="sv-people" type="number" min="1" value="1"></div>
+      </div>
+      <p class="muted" style="margin-top:12px;font-size:.88rem">শেষ তারিখ ধরা হয়েছে ফ্লাইটের প্রায় ৪ সপ্তাহ আগে, কারণ ভিসা আর টিকিটের জন্য ওই সময়টা লাগে। আপনার সাপ্লায়ারের ডেডলাইন অনুযায়ী বদলে নিন।</p>
+    </div>
+    <div class="panel out">
+      <div class="kv"><span>বাকি টাকা</span><b id="sv-rem">—</b></div>
+      <div class="kv"><span>কিস্তির সংখ্যা</span><b id="sv-n">—</b></div>
+      <div class="kv total"><span>প্রতি কিস্তি</span><b id="sv-amt">—</b></div>
+      <div class="kv"><span>দিনে হিসাব করলে</span><b id="sv-day">—</b></div>
+      <p id="sv-note"></p>
+      <div class="table-x" style="max-height:260px;overflow:auto"><table style="min-width:0">
+        <thead><tr><th>#</th><th>তারিখ</th><th class="r">পরিমাণ</th><th class="r">মোট জমা</th></tr></thead>
+        <tbody id="sv-table"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="panel"><h3>নিয়ম (লিখিত চুক্তিতে রাখুন)</h3><ul class="tight">
+      <li><b>দাম লক:</b> বুকিংয়ের দিনের দামই চূড়ান্ত। পরে এয়ার ফেয়ার বাড়লেও যাত্রী বাড়তি দেবেন না।</li>
+      <li><b>কোনো সুদ বা জরিমানা নেই।</b> কিস্তিতে কিনলেও মোট দাম একই থাকবে। এটা বিজ্ঞাপনে জোর দিয়ে বলুন।</li>
+      <li><b>আগে দিলে বোনাস:</b> শেষ তারিখের ১ মাস আগে পুরো টাকা দিলে ফ্রি কিট (ইহরাম, ব্যাগ, দোয়ার বই)।</li>
+      <li><b>সময়মতো পুরো টাকা দিতে না পারলে:</b> যত টাকা জমা হয়েছে তা হারাবে না। পরের ব্যাচ বা পরের রমজানের প্যাকেজে পুরোটা ক্রেডিট হবে। চাইলে নির্দিষ্ট সার্ভিস চার্জ কেটে ফেরত দেওয়া হবে (চার্জ কত তা চুক্তিতে লিখুন)।</li>
+      <li><b>প্রতিটা পেমেন্টের রসিদ:</b> SMS আর WhatsApp-এ, সাথে অগ্রগতির শতাংশ।</li>
+    </ul></div>
+    <div class="panel"><h3>আপনার সফটওয়্যারে যা যোগ করবেন</h3><ul class="tight">
+      <li>প্রতিটা বুকিংয়ের জন্য পেমেন্ট শিডিউল, আর প্রতি কিস্তির ৩ দিন আগে অটো রিমাইন্ডার।</li>
+      <li>bKash/Nagad পেমেন্ট লিংক বা QR। রেফারেন্স হিসেবে যাত্রীর বুকিং আইডি।</li>
+      <li>অগ্রগতি দেখার লিংক, যাত্রী আর পরিবার যেটা খুলে দেখতে পারবেন।</li>
+      <li>"ঝুঁকিতে" তালিকা: যারা ২টা কিস্তি মিস করেছেন। তাদের কাউন্সেলর ফোন করবেন, চাপ দিয়ে না, প্ল্যান বদলে দিয়ে (যেমন শেষ দশক থেকে পরের রমজানে সরানো)।</li>
+      <li>এয়ারলাইন্স গ্রুপ সিটের ডেডলাইনের সাথে মিলিয়ে ড্যাশবোর্ড: কতজনের পুরো টাকা এসেছে, কতজনের আসেনি।</li>
+    </ul></div>
+  </div>
+  <div class="callout" style="margin-top:16px"><b>সাবধান:</b> এটাকে "সঞ্চয় স্কিম" বা "ডিপোজিট" নামে বিজ্ঞাপন দেবেন না। নির্দিষ্ট প্যাকেজ ছাড়া সাধারণ মানুষের কাছ থেকে টাকা জমা নেওয়া ব্যাংকিং বা মাইক্রোক্রেডিট আইনের প্রশ্ন তুলতে পারে। সবসময় বলুন "নির্দিষ্ট ওমরাহ প্যাকেজের কিস্তিতে মূল্য পরিশোধ"। প্রতিটা প্ল্যানের সাথে প্যাকেজ, তারিখ আর চুক্তি থাকবে। শুরুর আগে একজন আইনজীবীকে দিয়ে চুক্তির ভাষা দেখিয়ে নিন।</div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div><div class="copyhead"><h3>অ্যাড: নিয়ত প্ল্যান (এই রমজান)</h3><button class="copybtn" type="button" data-copy="sv1">কপি</button></div>
+<div class="copy" id="sv1">একসাথে পুরো টাকা নেই? তাতে রমজানের ওমরাহ থেমে থাকবে না।
+
+আজ মাত্র ৳২০,০০০ দিয়ে আপনার সিট বুক করুন।
+বাকিটা রমজান পর্যন্ত মাসে মাসে, বা সপ্তাহে সপ্তাহে।
+
+✔ আজকের দামই চূড়ান্ত, পরে দাম বাড়লেও আপনার বাড়বে না
+✔ কোনো সুদ নেই, কোনো জরিমানা নেই
+✔ bKash/Nagad-এ পেমেন্ট, প্রতিবার রসিদ
+✔ সময়মতো শেষ করতে না পারলে টাকা হারাবে না, পরের ব্যাচে ট্রান্সফার
+
+১০ ফেব্রু ৳১,৮০,০০০ · ২৫ ফেব্রু ৳২,২০,০০০
+"নিয়ত" লিখে WhatsApp করুন (০১৭১০-৬৬৭৩৩৪), আপনার কিস্তির হিসাব পাঠিয়ে দেবো।</div></div>
+    <div><div class="copyhead"><h3>অ্যাড: নিয়ত ১৪৪৯ (পরের রমজান)</h3><button class="copybtn" type="button" data-copy="sv2">কপি</button></div>
+<div class="copy" id="sv2">এবার হলো না? আগামী রমজানের নিয়ত আজই করুন।
+
+মাত্র ৳৫,০০০ দিয়ে শুরু।
+তারপর মাসে ৳১০,০০০-এর মতো। ১৪ মাস পর আপনি থাকবেন আল্লাহর ঘরে, রমজানে, ইনশাআল্লাহ।
+
+চা-নাস্তা আর অপ্রয়োজনীয় খরচ থেকে দিনে ৳৩৩০ বাঁচালেই হয়ে যায়।
+
+পরিবারের সবাই মিলে একজনের জন্য দিতে পারবেন: ছেলে বিদেশ থেকে, মেয়ে দেশ থেকে।
+প্রতি মাসে WhatsApp-এ দেখবেন: "আম্মার ওমরাহ: ৪০% সম্পন্ন"।
+
+"নিয়ত ১৪৪৯" লিখে মেসেজ দিন: ০১৭১০-৬৬৭৩৩৪</div></div>
+  </div>
+</div></section>
+
+<section id="budget"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৪ · বাজেট ও ফানেল</div><h2>কত টাকা খরচ করলে কতজন যাত্রী</h2><p class="muted">ডিফল্ট রেট বাংলাদেশের ট্রাভেল ক্যাটাগরিতে Messenger/WhatsApp বিজ্ঞাপনের সাধারণ রেঞ্জ ধরে বসানো। প্রথম ২ সপ্তাহের আসল ডেটা পেলে বদলে দিন।</p></div>
+  <div class="calc">
+    <div class="panel"><div class="fields">
+      <div class="field"><label for="b-budget">মোট বিজ্ঞাপন বাজেট, অক্টো–জানু (৳)</label><input id="b-budget" type="number" step="50000" value="800000"></div>
+      <div class="field"><label for="b-cpl">প্রতি লিড খরচ, CPL (৳)</label><input id="b-cpl" type="number" step="10" value="160"></div>
+      <div class="field"><label for="b-qual">সিরিয়াস লিড (%)</label><input id="b-qual" type="number" value="35"></div>
+      <div class="field"><label for="b-visit">অফিসে আসা / ভিডিও কল (%)</label><input id="b-visit" type="number" value="30"></div>
+      <div class="field"><label for="b-close">বুকিং কনভার্শন (%)</label><input id="b-close" type="number" value="35"></div>
+      <div class="field"><label for="b-ticket">গড় প্যাকেজ মূল্য (৳)</label><input id="b-ticket" type="number" step="5000" value="195000"></div>
+      <div class="field"><label for="b-margin">লাভ/যাত্রী (৳)</label><input id="b-margin" type="number" step="1000" value="18000"></div>
+      <div class="field"><label for="b-old">পুরনো ক্লায়েন্ট (ডেটাবেসে)</label><input id="b-old" type="number" step="50" value="800"></div>
+      <div class="field"><label for="b-oldrate">পুরনো ক্লায়েন্ট থেকে বুকিং (%)</label><input id="b-oldrate" type="number" step="0.5" value="6"></div>
+      <div class="field"><label for="b-ref">প্রতি যাত্রী থেকে রেফারেল</label><input id="b-ref" type="number" step="0.05" value="0.25"></div>
+      <div class="field"><label for="b-cap">কলে কাজ করার দিন</label><input id="b-cap" type="number" value="95"></div>
+      <div class="field"><label for="b-dials">এজেন্টপ্রতি দিনে কল</label><input id="b-dials" type="number" value="90"></div>
+    </div></div>
+    <div class="panel out">
+      <div class="stats" style="grid-template-columns:1fr 1fr">
+        <div class="stat"><div class="v" id="r-pax">—</div><div class="l">মোট যাত্রী</div></div>
+        <div class="stat"><div class="v" id="r-rev">—</div><div class="l">মোট বিক্রি</div></div>
+        <div class="stat"><div class="v" id="r-profit">—</div><div class="l">নিট লাভ (বিজ্ঞাপন খরচ বাদে)</div></div>
+        <div class="stat"><div class="v" id="r-cpa">—</div><div class="l">প্রতি যাত্রী বিজ্ঞাপন খরচ</div></div>
+      </div>
+      <div class="funnel" id="funnel"></div>
+      <p id="r-agents" class="callout" style="margin-top:6px"></p>
+    </div>
+  </div>
+</div></section>
+
+<section id="meta"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৫ · Facebook, Instagram, WhatsApp, YouTube</div><h2>সোশ্যাল মিডিয়ায় কিভাবে বিজ্ঞাপন সাজাবেন</h2></div>
+  <div class="grid3">
+    <div class="panel"><h3>ক্যাম্পেইন ১: Messenger/WhatsApp লিড <span class="pill ok">বাজেটের ৫৫%</span></h3>
+      <ul class="tight">
+        <li>উদ্দেশ্য: Engagement, মেসেজ পাঠানো (Click-to-WhatsApp + Messenger)</li>
+        <li>বয়স ৩৫–৬৫, পুরো বাংলাদেশ। সিলেট, চট্টগ্রাম, কুমিল্লা, নোয়াখালী, ঢাকা আলাদা অ্যাড সেটে।</li>
+        <li>অটো-রিপ্লাই: "কোন দশকে যেতে চান? ১/২/৩/৪", তারপর সাথে সাথে নাম আর ফোন নম্বর চান।</li>
+        <li>প্রতি অ্যাড সেটে দিনে ৳৩–৫ হাজার দিয়ে শুরু করুন। যে সেটে CPL ৳২২০-এর বেশি, সেটা বন্ধ করুন।</li>
+      </ul></div>
+    <div class="panel"><h3>ক্যাম্পেইন ২: প্রবাসী সন্তানদের টার্গেট <span class="pill hot">সবচেয়ে বড় সুযোগ</span></h3>
+      <ul class="tight">
+        <li>সৌদি, UAE, কাতার, কুয়েত, মালয়েশিয়া, ইতালি, UK-তে থাকা বাংলাভাষী মানুষ।</li>
+        <li>মেসেজ: "রমজানে মা-বাবাকে আল্লাহর ঘরে পাঠান। দেশে আপনার হয়ে আমরা সব সামলাবো।"</li>
+        <li>বিদেশ থেকে পেমেন্ট নেওয়ার ব্যবস্থা রাখুন, আর বাবা-মায়ের যাত্রার লাইভ আপডেট সন্তানের WhatsApp-এ পাঠান।</li>
+        <li>বাজেটের ১৫%। প্রবাসীরা বেশি দাম দিতে রাজি থাকেন, তাই প্রিমিয়াম প্যাকেজ এখানে বেশি বিক্রি হবে।</li>
+      </ul></div>
+    <div class="panel"><h3>ক্যাম্পেইন ৩: রিটার্গেটিং <span class="pill mid">বাজেটের ১৫%</span></h3>
+      <ul class="tight">
+        <li>যারা ভিডিওর ৫০% দেখেছেন, পেজে মেসেজ দিয়েছেন বা ওয়েবসাইটে গেছেন তাদের আবার দেখান।</li>
+        <li>এখানে দেখান যাত্রীদের রিভিউ ভিডিও, হোটেল থেকে হারামে হেঁটে যাওয়ার ভিডিও, ভিসা গ্যারান্টির ঘোষণা।</li>
+        <li>পুরনো ক্লায়েন্টদের ফোন নম্বর Custom Audience হিসেবে আপলোড করুন, আর তাদের মতো Lookalike 1% অডিয়েন্স বানান।</li>
+      </ul></div>
+    <div class="panel"><h3>কনটেন্ট (প্রতিদিন পোস্ট)</h3>
+      <ul class="tight">
+        <li>সপ্তাহে ৩টা রিল: হোটেল থেকে হারামে হেঁটে যাওয়া (ঘড়ি দেখিয়ে), আগের যাত্রীর অনুভূতি, আলেম গাইডের ১ মিনিটের মাসআলা।</li>
+        <li>সপ্তাহে ১টা Facebook Live: "রমজান ওমরাহ প্রশ্নোত্তর", রাত ৯টায়।</li>
+        <li>প্রতিদিন স্টোরি: "আজ ৩টা সিট বুক হলো, বাকি ২৭টা"। সংখ্যা যেন সত্যি হয়।</li>
+      </ul></div>
+    <div class="panel"><h3>YouTube ও TikTok</h3>
+      <ul class="tight">
+        <li>YouTube: "রমজানে ওমরাহ খরচ কত ২০২৭" টাইপের ৮–১২ মিনিটের ভিডিও। মানুষ এগুলো সার্চ করে।</li>
+        <li>YouTube In-stream বিজ্ঞাপন ইসলামিক ওয়াজ চ্যানেলগুলোতে। ভিউ সস্তা, বয়স্ক দর্শক।</li>
+        <li>TikTok: তরুণরা মা-বাবার জন্য প্যাকেজ খোঁজে। "আব্বু-আম্মুকে সারপ্রাইজ" ধরনের কনটেন্ট বানান।</li>
+      </ul></div>
+    <div class="panel"><h3>Google ও ওয়েবসাইট</h3>
+      <ul class="tight">
+        <li>Google Search বিজ্ঞাপন: "ramadan umrah package bangladesh", "রমজান ওমরাহ প্যাকেজ"। বাজেটের ১০%।</li>
+        <li>একটা ল্যান্ডিং পেজ রাখুন: ৪টা প্যাকেজ, হোটেলের ছবি, দূরত্ব, MoRA লাইসেন্স নম্বর, WhatsApp বাটন।</li>
+        <li>Google Business Profile-এ রিভিউ চান। প্রতিটি ফিরে আসা যাত্রীকে বলুন রিভিউ দিতে।</li>
+      </ul></div>
+  </div>
+</div></section>
+
+<section id="old"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৬ · পুরনো ক্লায়েন্ট</div><h2>পুরনো ক্লায়েন্টই সবচেয়ে সস্তায় যাত্রী আনবে</h2><p class="muted">যিনি একবার আপনার সাথে গেছেন, তিনি আবার যাবেন বা পরিবারের কাউকে পাঠাবেন। নতুন লিডের তুলনায় খরচ প্রায় শূন্য।</p></div>
+  <div class="grid2">
+    <div class="panel"><h3>ধাপে ধাপে</h3>
+      <ol style="margin:6px 0 0;padding-left:1.2em;display:grid;gap:6px">
+        <li><b>এই সপ্তাহে:</b> গত ৫ বছরের সব যাত্রীর লিস্ট একটা Google Sheet-এ আনুন: নাম, ফোন, কবে গেছেন, কোন প্যাকেজ, কে রেফার করেছিলেন।</li>
+        <li><b>ভাগ করুন:</b> (ক) রমজানে গেছেন, (খ) অন্য সময়ে গেছেন, (গ) হজ্বে গেছেন, (ঘ) জিজ্ঞেস করেছিলেন কিন্তু যাননি।</li>
+        <li><b>১৫ অক্টো – ১৫ নভে:</b> মালিক নিজে বা সিনিয়র স্টাফ প্রত্যেককে ফোন করবেন। আগে খোঁজখবর, তারপর অফার।</li>
+        <li><b>"রমজান ফ্যামিলি" অফার:</b> পুরনো যাত্রী নিজে গেলে ৳৭,০০০ ছাড়। কাউকে রেফার করলে প্রতি বুকিংয়ে ৳৫,০০০ ক্যাশ বা পরের ট্রিপে ক্রেডিট।</li>
+        <li><b>পুনর্মিলনী:</b> নভেম্বরে পুরনো যাত্রীদের নিয়ে একটা ইফতার-মাহফিল ধাঁচের চা-চক্র। তাদের পরিবারকেও দাওয়াত দিন। সেখানে প্যাকেজ লঞ্চ করুন।</li>
+        <li><b>WhatsApp ব্রডকাস্ট:</b> মাসে ২ বার, বেশি না। একটা দোয়া বা হাদিস, একটা আপডেট, একটা অফার।</li>
+      </ol></div>
+    <div class="panel"><h3>রেফারেল কার্ড</h3>
+      <p>প্রত্যেক পুরনো যাত্রীকে ৫টা প্রিন্টেড কার্ড দিন, প্রতিটিতে তার নিজস্ব কোড (যেমন RAM-KARIM-01)। যে কোড দিয়ে বুক করবে, সে পাবে ৳৩,০০০ ছাড়, আর রেফারকারী পাবে ৳৫,০০০।</p>
+      <p style="margin-top:10px">মসজিদের ইমাম, মাদ্রাসার শিক্ষক আর লোকাল কমিউনিটির পরিচিত মানুষদের জন্য আলাদা "গ্রুপ লিডার" প্রোগ্রাম রাখুন। ১০ জন আনলে নিজে ফ্রি যাবেন, বা প্রতি যাত্রীতে ৳৫,০০০ কমিশন।</p>
+      <div class="callout" style="margin-top:14px">লক্ষ্য: পুরনো ক্লায়েন্ট আর রেফারেল থেকে মোট যাত্রীর অন্তত ৩০%। এটা হলে বিজ্ঞাপনের খরচ অর্ধেকে নেমে আসে।</div>
+    </div>
+  </div>
+</div></section>
+
+<section id="calls"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৭ · কল সেন্টার</div><h2>অনেক বেশি কল, কিন্তু নিয়ম মেনে</h2></div>
+  <div class="grid3">
+    <div class="panel"><h3>টিম ও সিস্টেম</h3>
+      <ul class="tight">
+        <li>নভেম্বর থেকে জানুয়ারি পর্যন্ত ৪–৬ জন টেলিসেলস। কতজন লাগবে তা বাজেট সেকশনে হিসাব করা আছে।</li>
+        <li>একটা হান্টিং লাইন (১৬xxx শর্ট কোড বা IP টেলিফোনি)। প্রতিটি কল রেকর্ড হবে।</li>
+        <li>CRM হিসেবে Google Sheet বা ফ্রি CRM। স্ট্যাটাস: নতুন → কথা হয়েছে → আগ্রহী → অফিসে এসেছে → বুকড → হারিয়েছি।</li>
+        <li><b>৫ মিনিট নিয়ম:</b> লিড এলে ৫ মিনিটের মধ্যে কল দিতে হবে। দেরি হলে কনভার্শন অর্ধেকে নেমে যায়।</li>
+      </ul></div>
+    <div class="panel"><h3>ফলো-আপ সিকোয়েন্স</h3>
+      <ul class="tight">
+        <li>দিন ০: কল, তারপর WhatsApp-এ প্যাকেজ PDF আর হোটেলের ভিডিও।</li>
+        <li>দিন ১: কল না ধরলে আবার কল, আর একটা SMS।</li>
+        <li>দিন ৩: আগের যাত্রীর রিভিউ ভিডিও পাঠান।</li>
+        <li>দিন ৭: "এই দশকে আর ১২টা সিট বাকি" মেসেজ।</li>
+        <li>দিন ১৪: মালিকের নিজের কল। দিন ২১: শেষবার, আর্লি বার্ড শেষ হওয়ার রিমাইন্ডার।</li>
+      </ul></div>
+    <div class="panel"><h3>বাল্ক SMS ও ভয়েস</h3>
+      <ul class="tight">
+        <li>শুধু যাদের অনুমতি আছে (পুরনো ক্লায়েন্ট, ইনকোয়ারি করেছে) তাদের SMS পাঠান। কেনা লিস্টে পাঠাবেন না, এতে সুনাম আর BTRC নিয়ম দুটোই ঝুঁকিতে পড়ে।</li>
+        <li>মাসে ২টা মাস্কিং SMS (এজেন্সির নামে)। প্রতিটিতে একটাই অফার আর একটা নম্বর।</li>
+        <li>রেকর্ড করা ভয়েস কল (আলেম গাইডের কণ্ঠে সালাম আর দাওয়াত) পুরনো ক্লায়েন্টদের জন্য। এটা খুব ভালো কাজ করে।</li>
+      </ul></div>
+  </div>
+  <div class="grid2" style="margin-top:20px">
+    <div><div class="copyhead"><h3>কল স্ক্রিপ্ট: নতুন লিড</h3><button class="copybtn" type="button" data-copy="s1">কপি</button></div>
+<div class="copy" id="s1">আসসালামু আলাইকুম, আমি [নাম], সাইফ হজ্ব উমরাহ ট্রাভেলস থেকে বলছি। আপনি রমজান ওমরাহর ব্যাপারে মেসেজ দিয়েছিলেন, তাই ফোন করলাম। দুই মিনিট কথা বলা যাবে?
+
+১. আপনি নিজে যাবেন, নাকি পরিবারের কারো জন্য খুঁজছেন?
+২. রমজানের কোন অংশে যেতে চান? প্রথম দশক, মাঝের দশক, শেষ দশক, নাকি পুরো রমজান?
+৩. কতজন যাবেন? সাথে কোনো বয়স্ক বা অসুস্থ কেউ আছেন?
+৪. পাসপোর্ট আছে কি? মেয়াদ কতদিন বাকি?
+
+[উত্তর অনুযায়ী একটা প্যাকেজ বলুন, দুই-তিনটা না।]
+আমাদের মক্কার হোটেল হারাম থেকে ৫০০ মিটার, হেঁটে ৭ মিনিট। আর ভিসা না হলে বুকিংয়ের পুরো টাকা ফেরত দিই, লিখিতভাবে।
+
+৳৩০,০০০ দিয়ে সিট কনফার্ম করা যায়। এখনকার দাম ৩০ নভেম্বর পর্যন্ত। আপনাকে কি WhatsApp-এ প্যাকেজের বিস্তারিত আর হোটেলের ভিডিও পাঠাবো? কাল কোন সময়ে ফোন করলে সুবিধা হয়?</div></div>
+    <div><div class="copyhead"><h3>কল স্ক্রিপ্ট: পুরনো ক্লায়েন্ট</h3><button class="copybtn" type="button" data-copy="s2">কপি</button></div>
+<div class="copy" id="s2">আসসালামু আলাইকুম [চাচা/খালাম্মা], আমি [নাম], সাইফ হজ্ব উমরাহ ট্রাভেলস থেকে। [সাল]-এ আপনি আমাদের সাথে ওমরাহতে গিয়েছিলেন, মনে আছে? কেমন আছেন? শরীর ভালো তো?
+
+[২০–৩০ সেকেন্ড শুধু খোঁজখবর নিন। অফার পরে।]
+
+এবার রমজানে আমরা একটা বিশেষ কাফেলা নিচ্ছি। আমাদের পুরনো যাত্রীদের জন্য ৳৭,০০০ ছাড় রেখেছি। আপনি নিজে যেতে চাইলে, বা পরিবারের কেউ, যেমন ছেলেমেয়ে বা ভাইবোন যেতে চাইলে, তাদের জন্যও এই সুবিধা থাকবে।
+
+আর আপনার পরিচিত কেউ আপনার রেফারেন্সে বুক করলে আপনাকে প্রতি বুকিংয়ে ৳৫,০০০ দেবো। আপনার নিজের একটা কোড আছে: [কোড]।
+
+আমি কি আপনার WhatsApp-এ বিস্তারিত পাঠাবো? দোয়া রাখবেন।</div></div>
+  </div>
+  <div class="panel" style="margin-top:20px"><h3>আপত্তি এলে কী বলবেন</h3>
+    <div class="table-x" style="margin-top:8px;border:0"><table>
+      <thead><tr><th>কাস্টমার বলেন</th><th>আপনি বলবেন</th></tr></thead>
+      <tbody>
+        <tr><td>"অন্য জায়গায় ১০ হাজার কম"</td><td>"ওদের হোটেলের নাম আর হারাম থেকে দূরত্বটা জিজ্ঞেস করে দেখুন। রমজানে ১ কিলোমিটার হাঁটা মানে তারাবিহ আর সেহরিতে কষ্ট। আমাদেরটা ৫০০ মিটার।"</td></tr>
+        <tr><td>"ভিসা না হলে?"</td><td>"বুকিংয়ের পুরো টাকা ফেরত, লিখিতভাবে। চুক্তিপত্রের কপি এখনই WhatsApp-এ পাঠাচ্ছি।"</td></tr>
+        <tr><td>"পরে জানাবো"</td><td>"অবশ্যই। শুধু জানিয়ে রাখি, শেষ দশকের [৩০]টা সিটের মধ্যে [১৮]টা বুক হয়ে গেছে। আমি কি বৃহস্পতিবার একবার ফোন দেবো?"</td></tr>
+        <tr><td>"এত টাকা একসাথে নেই"</td><td>"৳৩০,০০০ দিয়ে সিট রাখুন, বাকিটা তিন কিস্তিতে দেবেন। শেষ কিস্তি ভিসা প্রসেসিংয়ের আগে।"</td></tr>
+        <tr><td>"আম্মা একা যাবেন, চিন্তা হচ্ছে"</td><td>"আমাদের মহিলা গাইড থাকবেন। আর প্রতিদিন আপনার WhatsApp-এ আম্মার ছবি আর আপডেট পাঠাবো।"</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div></section>
+
+<section id="offline"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৮ · অফলাইন</div><h2>মসজিদ, সেমিনার, মিডিয়া</h2></div>
+  <div class="grid3">
+    <div class="panel"><h3>মসজিদ ও জুমা</h3><ul class="tight">
+      <li>আপনার এলাকার ৩০–৫০টা মসজিদে জুমার পর লিফলেট। ইমাম সাহেবের অনুমতি নিয়ে করুন।</li>
+      <li>মসজিদ কমিটির সাথে "গ্রুপ লিডার" চুক্তি করুন।</li>
+      <li>লিফলেটে QR কোড দিন, যেটা স্ক্যান করলে সরাসরি WhatsApp চ্যাট খুলবে।</li></ul></div>
+    <div class="panel"><h3>ওমরাহ প্রশিক্ষণ সেমিনার</h3><ul class="tight">
+      <li>নভেম্বর আর ডিসেম্বরে প্রতি শুক্রবার বিকেলে, ফ্রি। বিষয়: "রমজানে ওমরাহর নিয়ম ও প্রস্তুতি"।</li>
+      <li>আলেম বক্তা থাকবেন, সাথে চা-নাস্তা। সেমিনারেই বুকিং নিলে বিশেষ ছাড়।</li>
+      <li>Facebook-এ ইভেন্ট খুলুন আর লাইভ করুন। এতে অনলাইন রেজিস্ট্রেশনও বাড়ে।</li></ul></div>
+    <div class="panel"><h3>মিডিয়া ও অন্যান্য</h3><ul class="tight">
+      <li>লোকাল কেবল টিভিতে স্ক্রল, জেলা শহরে বেশি কাজ করে আর খরচ কম।</li>
+      <li>কমিউনিটি রেডিও বা FM-এ সেহরির সময়ের শোতে স্পন্সরশিপ, জানুয়ারি থেকে।</li>
+      <li>কর্পোরেট HR-এর সাথে যোগাযোগ: কর্মীদের জন্য গ্রুপ রেট। ব্যাংক আর গার্মেন্টস মালিকরা কর্মীদের ওমরাহতে পাঠান।</li>
+      <li>অফিসের সামনে বড় ব্যানার, আর রিসেপশনে কাবার ছবিসহ ফটো কর্নার।</li></ul></div>
+  </div>
+</div></section>
+
+<section id="timeline"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">০৯ · টাইমলাইন</div><h2>আজ থেকে ঈদ পর্যন্ত কাজের ধাপ</h2></div>
+  <div class="tl" id="tl">
+    <div class="phase" data-start="2026-10-14" data-end="2026-10-31"><div class="when">১৪–৩১ অক্টোবর · প্রস্তুতি</div><h3>ভিত্তি তৈরি</h3><ul>
+      <li>এয়ারলাইন্সে গ্রুপ সিট ব্লক (Saudia / Biman / US-Bangla), প্রতি দশকে ৪০–৬০টা।</li>
+      <li>হোটেলের সাথে চুক্তি করুন, আর হোটেলের ছবি ও দূরত্বের ভিডিও জোগাড় করুন।</li>
+      <li>পুরনো ক্লায়েন্টদের লিস্ট বানান, টেলিসেলস নিয়োগ দিন, ল্যান্ডিং পেজ চালু করুন।</li>
+      <li>প্রথম বিজ্ঞাপন চালু করুন, দিনে ৳৫,০০০ দিয়ে টেস্ট।</li></ul></div>
+    <div class="phase" data-start="2026-11-01" data-end="2026-11-30"><div class="when">নভেম্বর · আর্লি বার্ড</div><h3>পুরনো ক্লায়েন্ট আর প্রথম ঢেউ</h3><ul>
+      <li>সব পুরনো ক্লায়েন্টকে ফোন। পুনর্মিলনী অনুষ্ঠান আর প্যাকেজ লঞ্চ।</li>
+      <li>নভেম্বরের ১০টা গ্রুপের প্রতিটা থেকে ভিডিও তুলুন: হোটেল থেকে হারামে হাঁটা, যাত্রীর রিভিউ, মুয়াল্লিমের ছোট বয়ান। এগুলোই ডিসেম্বরের রমজান বিজ্ঞাপন।</li>
+      <li>বিজ্ঞাপন বাড়িয়ে দিনে ৳৮–১০ হাজার। প্রবাসী ক্যাম্পেইন চালু।</li>
+      <li>প্রতি শুক্রবার সেমিনার। ৩০ নভেম্বর আর্লি বার্ড শেষ।</li>
+      <li>লক্ষ্য: মোট সিটের ৩৫% বুকড।</li></ul></div>
+    <div class="phase" data-start="2026-12-01" data-end="2026-12-31"><div class="when">ডিসেম্বর · সবচেয়ে বেশি চাপ</div><h3>বিক্রির মূল সময়</h3><ul>
+      <li>বিজ্ঞাপন দিনে ৳১০–১৫ হাজার। রিটার্গেটিং আর রিভিউ ভিডিওতে জোর দিন।</li>
+      <li>প্রতিদিন "কতটা সিট বাকি" আপডেট দিন। ১৫ ডিসেম্বর দ্বিতীয় কিস্তি।</li>
+      <li>লক্ষ্য: ৭০% বুকড।</li></ul></div>
+    <div class="phase" data-start="2027-01-01" data-end="2027-01-31"><div class="when">জানুয়ারি · শেষ সিট আর ভিসা</div><h3>বিক্রি শেষ করা, অপারেশন শুরু</h3><ul>
+      <li>প্রথম দশকের বুকিং ১৫ জানুয়ারি বন্ধ, শেষ দশকের ৩১ জানুয়ারি।</li>
+      <li>ভিসা প্রসেসিং, বায়োমেট্রিক, মেনিনজাইটিস টিকা, যাত্রীদের ব্রিফিং সেশন।</li>
+      <li>শেষ সপ্তাহে "শেষ ৫টা সিট" ক্যাম্পেইন।</li></ul></div>
+    <div class="phase" data-start="2027-02-01" data-end="2027-03-12"><div class="when">ফেব্রুয়ারি – ঈদ · রমজান</div><h3>সেবা দিন, পরের বছরের জন্য কনটেন্ট তুলুন</h3><ul>
+      <li>প্রতিদিন হারাম থেকে লাইভ আর যাত্রীদের ভিডিও রিভিউ (অনুমতি নিয়ে)। এগুলোই পরের বছরের সবচেয়ে ভালো বিজ্ঞাপন।</li>
+      <li>দেশে পরিবারের কাছে প্রতিদিন WhatsApp আপডেট।</li>
+      <li>ফেরার পর রিভিউ নিন, রেফারেল কার্ড দিন, আর শাওয়াল/জিলকদ ওমরাহর অফার দিন।</li></ul></div>
+  </div>
+</div></section>
+
+<section id="copy"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">১০ · অ্যাড কপি</div><h2>এখনই চালানোর মতো বিজ্ঞাপনের লেখা</h2><p class="muted">[বন্ধনী]-র জায়গায় আপনার আসল তথ্য বসান। হোটেলের দূরত্ব, সিটের সংখ্যা আর গ্যারান্টি যেন সত্যি হয়।</p></div>
+  <div class="grid2">
+    <div><div class="copyhead"><h3>অ্যাড ১: বিশ্বাস ও গ্যারান্টি</h3><button class="copybtn" type="button" data-copy="a1">কপি</button></div>
+<div class="copy" id="a1">রমজানে ওমরাহ। এবার নিশ্চিন্তে।
+
+গত বছর হাজার হাজার মানুষ টাকা দিয়েও ভিসা পাননি। আমাদের সাথে সেই ভয় নেই:
+✔ ভিসা না হলে বুকিংয়ের ১০০% টাকা ফেরত, লিখিত চুক্তিতে
+✔ মক্কার হোটেল [হোটেলের নাম], হারাম থেকে ৫০০ মিটার
+✔ অভিজ্ঞ মুয়াল্লিম নুরুজ্জামানের নেতৃত্বে কাফেলা
+✔ ৳৩০,০০০ দিয়ে বুকিং, বাকিটা ৩ কিস্তিতে
+
+১০ ফেব্রুয়ারি (রমজানের শুরু, ১৩ রাত): ৳১,৮০,০০০
+২৫ ফেব্রুয়ারি (শেষ দশক, ঈদের আগে ফেরা): ৳২,২০,০০০
+US-Bangla সরাসরি ফ্লাইট
+
+৩০ নভেম্বরের মধ্যে বুক করলে ৳৫,০০০ ছাড়।
+হজ্ব লাইসেন্স নং: [নম্বর]
+WhatsApp-এ "রমজান" লিখে মেসেজ দিন: ০১৭১০-৬৬৭৩৩৪
+Plot-26/A, Road-02/04, Sector-03, Uttara, Dhaka-1230</div></div>
+    <div><div class="copyhead"><h3>অ্যাড ২: প্রবাসী সন্তানদের জন্য</h3><button class="copybtn" type="button" data-copy="a2">কপি</button></div>
+<div class="copy" id="a2">আপনি বিদেশে। আব্বা-আম্মা দেশে।
+এই রমজানে তাদের আল্লাহর ঘরে পাঠান।
+
+আপনি শুধু পেমেন্ট করবেন, বাকি সব আমাদের দায়িত্ব:
+• বাড়ি থেকে এয়ারপোর্ট পর্যন্ত পৌঁছে দেওয়া
+• হুইলচেয়ার আর বয়স্কদের জন্য আলাদা সহায়তা
+• প্রতিদিন আপনার WhatsApp-এ তাদের ছবি আর আপডেট
+• মহিলা যাত্রীদের জন্য মহিলা গাইড
+
+রমজানের ওমরাহ সওয়াবে হজ্বের সমান (বুখারি ও মুসলিম)।
+এর চেয়ে ভালো উপহার আর কী হতে পারে?
+
+প্যাকেজ ৳১,৮০,০০০ থেকে। বিদেশ থেকেও পেমেন্ট করা যাবে।</div></div>
+    <div><div class="copyhead"><h3>রিল স্ক্রিপ্ট: ৩০ সেকেন্ড</h3><button class="copybtn" type="button" data-copy="a3">কপি</button></div>
+<div class="copy" id="a3">[০–৩ সেকেন্ড] হোটেলের দরজা, স্ক্রিনে ঘড়ি দেখাচ্ছে ৪:৪০ AM। লেখা: "সেহরির পর হোটেল থেকে হারাম, কত মিনিট?"
+[৩–২০ সেকেন্ড] হেঁটে যাওয়ার টাইমল্যাপস, শেষে কাবা দেখা যাচ্ছে। ঘড়িতে ৪:৪৭।
+[২০–২৫ সেকেন্ড] লেখা: "৭ মিনিট। কারণ রমজানে প্রতিটা ওয়াক্তের সময় মূল্যবান।"
+[২৫–৩০ সেকেন্ড] লোগো, "রমজান ওমরাহ ৳১,৮০,০০০ থেকে", ০১৭১০-৬৬৭৩৩৪।</div></div>
+    <div><div class="copyhead"><h3>WhatsApp ব্রডকাস্ট (পুরনো ক্লায়েন্ট)</h3><button class="copybtn" type="button" data-copy="a4">কপি</button></div>
+<div class="copy" id="a4">আসসালামু আলাইকুম [নাম] ভাই/আপা,
+[সাল]-এ আপনি আমাদের কাফেলার মেহমান ছিলেন, আলহামদুলিল্লাহ।
+
+রমজান ১৪৪৮-এর ওমরাহ কাফেলার বুকিং শুরু হয়েছে। আমাদের পুরনো যাত্রী হিসেবে আপনার আর আপনার পরিবারের জন্য জনপ্রতি ৳৭,০০০ ছাড়।
+
+আপনার রেফারেল কোড: [কোড]
+এই কোড দিয়ে কেউ বুক করলে আপনি পাবেন ৳৫,০০০।
+
+বিস্তারিত জানতে এই মেসেজের রিপ্লাই দিন। দোয়া রাখবেন।</div></div>
+  </div>
+</div></section>
+
+<section id="kpi"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">১১ · মাপজোখ ও নিয়মকানুন</div><h2>কোন সংখ্যা প্রতিদিন দেখবেন, আর কোথায় সাবধান থাকবেন</h2></div>
+  <div class="grid3">
+    <div class="panel"><h3>প্রতিদিনের KPI</h3><ul class="tight">
+      <li>বিজ্ঞাপন খরচ, মোট লিড, ইউনিক লিড</li>
+      <li>সিরিয়াস লিড আর প্রতি সিরিয়াস লিডের খরচ</li>
+      <li>কতজনকে কল করা হলো, কতজনকে কোটেশন গেল</li>
+      <li>কনফার্ম বুকিং আর ক্যানসেলেশন</li>
+      <li>প্রতি বুকিংয়ে মার্কেটিং খরচ বনাম প্রতি যাত্রীর লাভ</li>
+      <li>বুকিং কোথা থেকে এলো: Facebook, পুরনো ক্লায়েন্ট, রেফারেল, পার্টনার, অফলাইন</li>
+    </ul><p class="muted" style="margin-top:8px">সস্তা লিড মানেই ভালো ক্যাম্পেইন না। কোন বিজ্ঞাপন রাখবেন আর কোনটা বন্ধ করবেন, তা ঠিক করুন প্রতি বুকিংয়ের খরচ দেখে।</p></div>
+    <div class="panel"><h3>সোর্স কোড দিয়ে ট্র্যাকিং</h3>
+      <p>প্রতিটি চ্যানেলের জন্য আলাদা QR কোড বা কোড রাখুন, যেমন <span class="num">MOSQUE01</span>, <span class="num">PARTNER02</span>, <span class="num">OLDCLIENT03</span>, <span class="num">FB-LAST10</span>। আপনার এজেন্সি সফটওয়্যারে প্রতিটি লিডের সাথে সোর্স সেভ করুন।</p>
+      <p style="margin-top:10px"><b>সর্বোচ্চ কত খরচ করা যায়:</b> প্রতি যাত্রীর লাভ (বিজ্ঞাপনের আগে) থেকে যতটুকু লাভ রাখতে চান তা বাদ দিন। যা থাকে, একজন যাত্রী আনতে তার বেশি খরচ করবেন না। যেমন লাভ ৳১৮,০০০ আর রাখতে চান ৳১২,০০০, তাহলে প্রতি যাত্রীতে সর্বোচ্চ ৳৬,০০০।</p></div>
+    <div class="panel"><h3>নিয়মকানুন ও বিশ্বাস</h3><ul class="tight">
+      <li>লাইসেন্স নম্বর প্রতিটি বিজ্ঞাপনে দিন। আপনার এজেন্সির নাম <a href="https://hajj.gov.bd/agency-profile" target="_blank" rel="noopener">সরকারি হজ পোর্টালে</a> আছে কিনা মিলিয়ে নিন। (<a href="https://bdlaws.minlaw.gov.bd/act-print-1374.html" target="_blank" rel="noopener">হজ ও ওমরাহ ব্যবস্থাপনা আইন, ২০২১</a>)</li>
+      <li>ভিসা রিফান্ড গ্যারান্টি তখনই দিন, যখন সাপ্লায়ারের সাথে চুক্তিতে সেটা রক্ষা করতে পারবেন।</li>
+      <li>সিট আর হোটেল কনফার্ম না হলে টাকা নেবেন না। "সীমিত আসন" বললে সংখ্যাটা যেন সত্যি হয়।</li>
+      <li>প্রচারমূলক SMS শুধু যারা অনুমতি দিয়েছে তাদের পাঠান। পাঠানোর আগে BTRC-র DND নিয়ম দেখে নিন।</li>
+      <li>যাত্রীর ছবি, ভিডিও বা রিভিউ ব্যবহারের আগে লিখিত অনুমতি নিন।</li></ul></div>
+  </div>
+</div></section>
+
+<section id="check"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">১২ · চেকলিস্ট</div><h2>এই সপ্তাহের কাজ</h2><p class="muted">টিক দিলে এই ব্রাউজারে সেভ থাকবে।</p></div>
+  <div class="panel" style="max-width:760px">
+    <div class="progress"><i id="prog"></i></div>
+    <div class="check" id="checklist">
+      <label><input type="checkbox" id="c1"><span>এয়ারলাইন্সের সাথে গ্রুপ সিট নিয়ে কথা বলা (৪টা দশক, প্রতিটায় ৪০–৬০ সিট)</span></label>
+      <label><input type="checkbox" id="c2"><span>মক্কা ও মদিনার হোটেলের রেট নেওয়া, আর দূরত্ব মিটারে লিখে রাখা</span></label>
+      <label><input type="checkbox" id="c3"><span>প্রাইসিং ক্যালকুলেটরে আসল খরচ বসিয়ে চূড়ান্ত দাম ঠিক করা</span></label>
+      <label><input type="checkbox" id="c4"><span>ভিসা রিফান্ড গ্যারান্টির লিখিত শর্ত তৈরি করা</span></label>
+      <label><input type="checkbox" id="c5"><span>পুরনো ক্লায়েন্টদের লিস্ট Google Sheet-এ আনা</span></label>
+      <label><input type="checkbox" id="c6"><span>WhatsApp Business চালু করা: ক্যাটালগ, অটো-রিপ্লাই, লেবেল</span></label>
+      <label><input type="checkbox" id="c7"><span>২ জন টেলিসেলস নিয়োগ, আর স্ক্রিপ্ট নিয়ে প্র্যাকটিস</span></label>
+      <label><input type="checkbox" id="c8"><span>৩টা বিজ্ঞাপন বানানো (বিশ্বাস, প্রবাসী, রিল), দিনে ৳৫,০০০ দিয়ে টেস্ট</span></label>
+      <label><input type="checkbox" id="c9"><span>Meta Pixel আর Custom Audience (পুরনো ক্লায়েন্টদের নম্বর) সেটআপ</span></label>
+      <label><input type="checkbox" id="c12"><span>নিয়ত প্ল্যানের চুক্তি লেখা (দাম লক, ক্রেডিট ট্রান্সফার, রিফান্ড চার্জ), আর আইনজীবীকে দেখানো</span></label>
+      <label><input type="checkbox" id="c13"><span>সফটওয়্যারে কিস্তির শিডিউল, অটো রিমাইন্ডার আর bKash/Nagad পেমেন্ট লিংক যোগ করা</span></label>
+      <label><input type="checkbox" id="c11"><span>এজেন্সি সফটওয়্যারে লিড সোর্স ফিল্ড আর ফলো-আপের তারিখ যোগ করা</span></label>
+      <label><input type="checkbox" id="c14"><span>যাত্রা বোর্ডে ২৫ ফেব্রুর রমজানের দিন আর "১৯টি যাত্রা" সংখ্যা ঠিক করা</span></label>
+      <label><input type="checkbox" id="c15"><span>রমজানের দুই গ্রুপের মক্কা ও মদিনার হোটেলের নাম আর দূরত্ব নিশ্চিত করা (বিজ্ঞাপনে ৫০০ মিটার লেখা আছে)</span></label>
+      <label><input type="checkbox" id="c16"><span>পুরো রমজান বা দ্বিতীয় শেষ দশক গ্রুপের জন্য এয়ারলাইন্সে সিট চাওয়া</span></label>
+      <label><input type="checkbox" id="c10"><span>নভেম্বরের প্রথম শুক্রবারের সেমিনারের ভেন্যু আর বক্তা ঠিক করা</span></label>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><b>সূত্র ও সতর্কতা।</b> প্রতিযোগীর তথ্য Facebook Ad Library (বাংলাদেশ) থেকে, দেখা হয়েছে ১৪ অক্টোবর ২০২৬। খরচের ডিফল্ট সংখ্যা আর CPL আনুমানিক, তাই নিজের সাপ্লায়ার রেট দিয়ে যাচাই করে নিন। রমজানের তারিখ চাঁদ দেখার ওপর নির্ভরশীল।</p>
+  <ol>
+    <li><a href="https://gulfnews.com/uae/ramadan/when-is-ramadan-2027-the-expected-date-moon-sighting-and-eid-explained-1.500630523" target="_blank" rel="noopener">Gulf News: Ramadan 2027 expected date</a></li>
+    <li><a href="https://blog.wego.com/ramadan-2027/" target="_blank" rel="noopener">Wego: When is Ramadan 2027</a></li>
+    <li><a href="https://www.dhakatribune.com/bangladesh/376636/adviser-umrah-visa-for-bangladeshis-not-suspended" target="_blank" rel="noopener">Dhaka Tribune: Umrah visa for Bangladeshis (HAAB figures)</a></li>
+    <li><a href="https://www.jagonews24.com/en/national/news/81263" target="_blank" rel="noopener">Jago News: Saudi visa cut, Ramadan 2025</a></li>
+    <li><a href="https://blog.wego.com/umrah-visa-from-bangladesh/" target="_blank" rel="noopener">Wego: Umrah visa from Bangladesh 2026</a></li>
+    <li><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BD&q=%E0%A6%B0%E0%A6%AE%E0%A6%9C%E0%A6%BE%E0%A6%A8%20%E0%A6%93%E0%A6%AE%E0%A6%B0%E0%A6%BE%E0%A6%B9&search_type=keyword_unordered" target="_blank" rel="noopener">Facebook Ad Library: রমজান ওমরাহ (BD)</a></li>
+    <li><a href="https://hajj.gov.bd/agency-profile" target="_blank" rel="noopener">সরকারি হজ পোর্টাল: এজেন্সি প্রোফাইল</a> · <a href="https://bdlaws.minlaw.gov.bd/act-print-1374.html" target="_blank" rel="noopener">হজ ও ওমরাহ ব্যবস্থাপনা আইন, ২০২১</a></li>
+  </ol>
+  <p style="margin-top:14px"><b>এই প্ল্যানের ফাইল</b></p>
+  <ul class="tight">
+    <li><a href="journey-board.png" target="_blank" rel="noopener">যাত্রা বোর্ড (A4 ছবি)</a></li>
+    <li><a href="research-notes.md" target="_blank" rel="noopener">রিসার্চ নোট: Ad Library-র সব প্রতিযোগী ও দাম</a></li>
+    <li><a href="second-opinion-plan.md" target="_blank" rel="noopener">দ্বিতীয় প্ল্যান (আপনার পাঠানো)</a></li>
+  </ul>
+  <p style="margin-top:14px">সাইফ হজ্ব উমরাহ ট্রাভেলস · Plot-26/A, Road-02/04, Sector-03, Uttara, Dhaka-1230 · ০১৭১০-৬৬৭৩৩৪ · ০১৮১২-১৮৭৩৩০ · saifhajjumrah@gmail.com</p>
+</div></footer>
+
+<script>
+(function(){
+  const bn = n => Math.round(n).toLocaleString('bn-BD');
+  const tk = n => '৳' + bn(n);
+  const $ = id => document.getElementById(id);
+
+  // countdown
+  const ram = new Date('2027-02-08T00:00:00+03:00');
+  const days = Math.max(0, Math.ceil((ram - new Date())/86400000));
+  $('cd').textContent = bn(days) + ' দিন বাকি';
+
+  // timeline "now"
+  const today = new Date();
+  document.querySelectorAll('.phase').forEach(p=>{
+    const s=new Date(p.dataset.start), e=new Date(p.dataset.end+'T23:59:59');
+    if(today>=s && today<=e) p.classList.add('now');
+  });
+
+  // pricing
+  const presets = {
+    first:{air:92000,visa:18000,mkn:9,mkr:85,mdn:4,mdr:55,trans:6000,food:0,misc:3000,margin:14000, comp:[125000,160000,165000,185000,190000], lo:125000, hi:190000},
+    mid:  {air:98000,visa:18000,mkn:9,mkr:110,mdn:4,mdr:60,trans:6000,food:0,misc:3000,margin:14000, comp:[160000,175000,190000], lo:160000, hi:200000},
+    last: {air:110000,visa:18000,mkn:10,mkr:140,mdn:4,mdr:70,trans:6000,food:0,misc:3500,margin:16000, comp:[198000,210000,225000,260000], lo:198000, hi:260000},
+    full: {air:100000,visa:18000,mkn:24,mkr:115,mdn:8,mdr:55,trans:8000,food:0,misc:4000,margin:22000, comp:[250000,250000], lo:240000, hi:300000}
+  };
+  const pf = ['air','visa','mkn','mkr','mdn','mdr','trans','food','misc','margin'];
+  let cur = 'first';
+  $('sar').value = 32.6; $('mkt').value = 4500;
+  function load(p){ cur=p; pf.forEach(k=>$(k).value=presets[p][k]);
+    document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.p===p)); calcPrice(); }
+  function v(id){ return parseFloat($(id).value)||0; }
+  function calcPrice(){
+    const sar=v('sar'), nights=v('mkn')+v('mdn');
+    const av=v('air')+v('visa');
+    const hotel=(v('mkn')*v('mkr')+v('mdn')*v('mdr'))*sar;
+    const other=v('trans')+v('food')*(nights+1)+v('misc');
+    const mkt=v('mkt');
+    const cost=av+hotel+other+mkt;
+    const price=Math.ceil((cost+v('margin'))/1000)*1000;
+    $('o-av').textContent=tk(av); $('o-hotel').textContent=tk(hotel); $('o-nights').textContent=bn(nights);
+    $('o-other').textContent=tk(other); $('o-mkt').textContent=tk(mkt); $('o-cost').textContent=tk(cost);
+    $('o-price').textContent=tk(price);
+    const P=presets[cur]; const min=Math.min(P.lo, price)*0.92, max=Math.max(P.hi, price)*1.06;
+    const pos=x=>((x-min)/(max-min)*100).toFixed(2)+'%';
+    const band=$('band'); band.innerHTML='';
+    const z=document.createElement('div'); z.className='zone'; z.style.left=pos(P.lo); z.style.width=((P.hi-P.lo)/(max-min)*100)+'%'; band.appendChild(z);
+    P.comp.forEach(c=>{const d=document.createElement('div'); d.className='comp'; d.style.left=pos(c); band.appendChild(d);});
+    const m=document.createElement('div'); m.className='mark'; m.style.left=pos(price); band.appendChild(m);
+    $('ax0').textContent=tk(min); $('ax1').textContent=tk(max);
+    const vd=$('verdict');
+    if(price<P.lo) vd.innerHTML='<span class="pill ok">মার্কেটের চেয়ে কম</span> সবার চেয়ে সস্তা। লাভ ঠিক আছে কিনা আরেকবার দেখুন, আর হোটেলের মান নিয়ে প্রশ্ন আসতে পারে।';
+    else if(price<=(P.lo+P.hi)/2) vd.innerHTML='<span class="pill ok">ভালো জায়গায়</span> নিচের দিকের দাম, কিন্তু বিশ্বাস আর গ্যারান্টি দিয়ে আলাদা হতে পারবেন। বিজ্ঞাপনে এই দামটাই দেখান।';
+    else if(price<=P.hi) vd.innerHTML='<span class="pill mid">উপরের দিকে</span> হোটেলের দূরত্ব, খাবার আর গাইড দিয়ে দামটা যুক্তিসঙ্গত দেখাতে হবে।';
+    else vd.innerHTML='<span class="pill hot">মার্কেটের চেয়ে বেশি</span> এই দামে প্রিমিয়াম প্যাকেজ হিসেবে বিক্রি করুন, নয়তো খরচ কমান (হোটেল রেট বা এয়ার ফেয়ার)।';
+  }
+  document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>load(b.dataset.p)));
+  [...pf,'sar','mkt'].forEach(k=>$(k).addEventListener('input',calcPrice));
+  load('first');
+
+  // budget funnel
+  const bf=['b-budget','b-cpl','b-qual','b-visit','b-close','b-ticket','b-margin','b-old','b-oldrate','b-ref','b-cap','b-dials'];
+  function short(n){ if(n>=10000000) return '৳'+(n/10000000).toLocaleString('bn-BD',{maximumFractionDigits:2})+' কোটি'; if(n>=100000) return '৳'+(n/100000).toLocaleString('bn-BD',{maximumFractionDigits:1})+' লাখ'; return tk(n); }
+  function calcBudget(){
+    const budget=v('b-budget'), cpl=Math.max(1,v('b-cpl'));
+    const leads=budget/cpl, qual=leads*v('b-qual')/100, visit=qual*v('b-visit')/100, adPax=visit*v('b-close')/100;
+    const oldPax=v('b-old')*v('b-oldrate')/100;
+    const refPax=(adPax+oldPax)*v('b-ref');
+    const pax=adPax+oldPax+refPax;
+    const rev=pax*v('b-ticket'), profit=pax*v('b-margin')-budget;
+    $('r-pax').textContent=bn(pax); $('r-rev').textContent=short(rev);
+    $('r-profit').textContent=(profit<0?'−':'')+short(Math.abs(profit));
+    $('r-profit').style.color=profit<0?'var(--bad)':'var(--good)';
+    $('r-cpa').textContent=adPax>0?tk(budget/adPax):'—';
+    const rows=[['লিড',leads],['সিরিয়াস লিড',qual],['অফিস / ভিডিও কল',visit],['বিজ্ঞাপন থেকে যাত্রী',adPax],['পুরনো ক্লায়েন্ট',oldPax],['রেফারেল',refPax]];
+    const mx=Math.max(...rows.map(r=>r[1]),1);
+    $('funnel').innerHTML=rows.map(r=>`<div class="frow"><span>${r[0]}</span><div><div class="fbar" style="width:${(r[1]/mx*100).toFixed(1)}%"></div></div><span class="num">${bn(r[1])}</span></div>`).join('');
+    const calls=(leads*3 + v('b-old')*2)/Math.max(1,v('b-cap'));
+    const agents=Math.ceil(calls/Math.max(1,v('b-dials')));
+    $('r-agents').innerHTML=`প্রতি লিডে গড়ে ৩টা আর প্রতি পুরনো ক্লায়েন্টে ২টা কল ধরলে দিনে প্রায় <b class="num">${bn(calls)}</b>টা কল লাগবে। এর জন্য <b>${bn(agents)} জন</b> টেলিসেলস দরকার, সাথে ১ জন সুপারভাইজার।`;
+  }
+  bf.forEach(k=>$(k).addEventListener('input',calcBudget)); calcBudget();
+
+  // niyat installment plan
+  const svPlans={first:{d:'2027-01-10',p:180000},last:{d:'2027-01-25',p:220000},mid:{d:'2026-12-12',p:170000},full:{d:'2027-01-07',p:245000},next:{d:'2028-01-01',p:185000}};
+
+  // journey board (from "B — Journey board (A4)")
+  const SCH=[
+    [1,'2026-10-28','SV · DAC→MED','১০ নভে · JED','১৩','','গিয়াশ',170],
+    [2,'2026-11-01','SV · DAC→JED','','১৩','হিজরা মসজিদ · কোবা','নুরুজ্জামান',160],
+    [3,'2026-11-01','SV · DAC→JED','১৪ নভে','','','মোশাররফ',0],
+    [5,'2026-11-02','US · DAC→JED','','১৩','হিজরা মসজিদ · কোবা','নুরুজ্জামান',150],
+    [6,'2026-11-04','সরাসরি · US-Bangla','১৭ নভে','','মক্কা ৫০০ মি · মদিনা ৩…','কমরুজ্জামান',170],
+    [7,'2026-11-07','SV · DAC→JED','২১ নভে','','','মোশাররফ',0],
+    [8,'2026-11-07','SV · DAC→RUH→JED','২০ নভে','','','মিনহাজ',0],
+    [9,'2026-11-16','SV · DAC→RUH→JED','২৯ নভে','','','মোশাররফ',0],
+    [10,'2026-11-24','সরাসরি','','','','নুরুজ্জামান',0],
+    [11,'2026-11-24','সরাসরি','','১৩','হিজরা মসজিদ · কোবা','জাবের',155],
+    [12,'2026-11-28','SV · DAC→RUH→JED','১২ ডিসে','','','মোশাররফ',0],
+    [13,'2026-12-15','সরাসরি · US-Bangla','২৮ ডিসে','','মক্কা ৫০০ মি · মদিনা ৩…','কমরুজ্জামান',180],
+    [14,'2026-12-16','সরাসরি','৩০ ডিসে','','সুইস খলিল · আমজাদ…','মোস্তফিজ',200],
+    [15,'2026-12-19','সরাসরি','','১৩','হিজরা মসজিদ · কোবা','নুরুজ্জামান',165],
+    [16,'2026-12-22','সরাসরি · US-Bangla','৪ জানু','','মক্কা ৫০০ মি · মদিনা ৩…','কমরুজ্জামান',180],
+    [17,'2027-01-12','সরাসরি','','১৩','শবে বরাত · হিজরা মসজিদ · কোবা','নুরুজ্জামান',170],
+    [18,'2027-02-10','সরাসরি','','১৩','রমজান শুরু · হিজরা মসজিদ · কোবা','নুরুজ্জামান',180],
+    [19,'2027-02-25','সরাসরি','','১৩','শেষ দশক · হিজরা মসজিদ · কোবা','নুরুজ্জামান',220]
+  ];
+  const ramStart=new Date('2027-02-08');
+  $('sch-body').innerHTML=SCH.map(r=>{
+    const d=new Date(r[1]); const ram=d>=ramStart;
+    const rd=ram?` <span class="pill hot">~${bn(Math.round((d-ramStart)/86400000)+1)} রমজান</span>`:'';
+    const ret=[r[3],r[4]?bn(+r[4])+' রাত':''].filter(Boolean).join(' · ')||'—';
+    return `<tr${ram?' class="us"':''}><td class="num">${bn(r[0])}</td><td>${d.toLocaleDateString('bn-BD',{day:'numeric',month:'short'})}${rd}</td><td>${r[2]}</td><td>${ret}</td><td>${r[5]||'—'}</td><td>${r[6]}</td><td class="r num">${r[7]?tk(r[7]*1000):'—'}</td></tr>`;}).join('');
+  const priced=SCH.filter(r=>r[7]), byM={};
+  SCH.forEach(r=>{byM[r[6]]=(byM[r[6]]||0)+1;});
+  const topM=Object.entries(byM).sort((a,b)=>b[1]-a[1])[0];
+  $('sch-stats').innerHTML=[
+    [bn(SCH.length)+'টি','বোর্ডে মোট যাত্রা (অক্টো–ফেব্রু)'],
+    [bn(SCH.filter(r=>new Date(r[1])>=ramStart).length)+'টি','রমজানের যাত্রা'],
+    [tk(Math.min(...priced.map(r=>r[7]))*1000)+' – '+tk(Math.max(...priced.map(r=>r[7]))*1000),'দামের রেঞ্জ'],
+    [topM[0]+' ('+bn(topM[1])+')','সবচেয়ে বেশি গ্রুপের মুয়াল্লিম']
+  ].map(s=>`<div class="stat"><div class="v" style="font-size:1.15rem">${s[0]}</div><div class="l">${s[1]}</div></div>`).join('');
+  const fmtD=d=>d.toLocaleDateString('bn-BD',{day:'numeric',month:'short',year:'numeric'});
+  const iso=d=>d.toISOString().slice(0,10);
+  $('sv-start').value=iso(new Date());
+  $('sv-plan').addEventListener('change',()=>{ const p=svPlans[$('sv-plan').value]; $('sv-price').value=p.p; $('sv-dep').value=$('sv-plan').value==='next'?5000:20000; calcSv(); });
+  function calcSv(){
+    const plan=svPlans[$('sv-plan').value], ppl=Math.max(1,v('sv-people'));
+    const price=v('sv-price')*ppl, dep=Math.min(v('sv-dep')*ppl,price), rem=price-dep;
+    const start=new Date($('sv-start').value||iso(new Date())), end=new Date(plan.d);
+    const step=parseInt($('sv-freq').value,10);
+    const dates=[]; const d=new Date(start);
+    if(step===30){ d.setMonth(d.getMonth()+1); while(d<=end){ dates.push(new Date(d)); d.setMonth(d.getMonth()+1);} }
+    else { d.setDate(d.getDate()+step); while(d<=end){ dates.push(new Date(d)); d.setDate(d.getDate()+step);} }
+    if(!dates.length) dates.push(new Date(end));
+    const n=dates.length, amt=Math.ceil(rem/n/100)*100;
+    const days=Math.max(1,Math.round((end-start)/86400000));
+    $('sv-rem').textContent=tk(rem); $('sv-n').textContent=bn(n)+'টি';
+    $('sv-amt').textContent=tk(amt); $('sv-day').textContent='~'+tk(rem/days)+' / দিন';
+    let paid=dep, rows=`<tr><td class="num">০</td><td>${fmtD(start)} (বুকিং)</td><td class="r num">${tk(dep)}</td><td class="r num">${Math.round(dep/price*100).toLocaleString('bn-BD')}%</td></tr>`;
+    dates.forEach((dt,i)=>{ const a=i===n-1?price-paid:Math.min(amt,price-paid); paid+=a;
+      rows+=`<tr><td class="num">${bn(i+1)}</td><td>${fmtD(dt)}</td><td class="r num">${tk(a)}</td><td class="r num">${Math.round(paid/price*100).toLocaleString('bn-BD')}%</td></tr>`; });
+    $('sv-table').innerHTML=rows;
+    const monthly=rem/Math.max(1,days/30);
+    $('sv-note').innerHTML = monthly>40000
+      ? '<span class="pill mid">কিস্তি বড়</span> এই রমজানের জন্য সময় কম। যার জন্য এটা বেশি হয়ে যায়, তাকে "নিয়ত ১৪৪৯" (পরের রমজান) প্রস্তাব করুন।'
+      : '<span class="pill ok">সহজ কিস্তি</span> এই পরিমাণ বেশিরভাগ চাকরিজীবী পরিবারের নাগালে। বিজ্ঞাপনে এই সংখ্যাটাই দেখান।';
+  }
+  ['sv-price','sv-dep','sv-freq','sv-start','sv-people'].forEach(k=>$(k).addEventListener('input',calcSv)); calcSv();
+
+  // copy buttons
+  document.querySelectorAll('.copybtn').forEach(b=>b.addEventListener('click',()=>{
+    const el=$(b.dataset.copy), txt=el.innerText;
+    const done=()=>{ b.textContent='কপি হয়েছে'; setTimeout(()=>b.textContent='কপি',1600); };
+    try{ navigator.clipboard.writeText(txt).then(done).catch(()=>sel(el)); }catch(e){ sel(el); }
+  }));
+  function sel(el){ const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  // checklist
+  const boxes=[...document.querySelectorAll('#checklist input')];
+  let saved={}; try{ saved=JSON.parse(localStorage.getItem('rum-check')||'{}'); }catch(e){}
+  boxes.forEach(b=>{ b.checked=!!saved[b.id]; b.addEventListener('change',()=>{ saved[b.id]=b.checked; try{localStorage.setItem('rum-check',JSON.stringify(saved));}catch(e){} prog(); }); });
+  function prog(){ $('prog').style.width=(boxes.filter(b=>b.checked).length/boxes.length*100)+'%'; }
+  prog();
+})();
+</script>

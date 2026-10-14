@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lead Automation Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --text: #1d2321;
+    --muted: #5d6763;
+    --border: #e2ded4;
+    --accent: #0f6b4f;
+    --accent-soft: #e3f1ec;
+    --warn: #9a5b00;
+    --warn-soft: #fbf0dc;
+    --code-bg: #f1eee7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141816;
+      --surface: #1c211f;
+      --text: #e8ece9;
+      --muted: #9aa6a1;
+      --border: #2e3633;
+      --accent: #4cc39a;
+      --accent-soft: #1d3029;
+      --warn: #f0b860;
+      --warn-soft: #33291a;
+      --code-bg: #232926;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141816;
+    --surface: #1c211f;
+    --text: #e8ece9;
+    --muted: #9aa6a1;
+    --border: #2e3633;
+    --accent: #4cc39a;
+    --accent-soft: #1d3029;
+    --warn: #f0b860;
+    --warn-soft: #33291a;
+    --code-bg: #232926;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Hind Siliguri", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 40px 16px 64px; }
+  header { margin-bottom: 32px; }
+  .eyebrow { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
+  h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.25; margin: 8px 0 12px; }
+  .lede { color: var(--muted); font-size: 18px; margin: 0; }
+  h2 { font-size: 24px; margin: 44px 0 14px; padding-top: 8px; border-top: 1px solid var(--border); }
+  h3 { font-size: 19px; margin: 0 0 8px; color: var(--accent); }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 700; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .grid .card { margin-bottom: 0; }
+  .flow { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .step b { color: var(--accent); }
+  .arrow { text-align: center; color: var(--muted); font-size: 20px; line-height: 1.6; }
+  .sources { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 2px 12px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 16px 0;
+  }
+  .callout.warn { background: var(--warn-soft); border-left-color: var(--warn); }
+  .callout.warn strong { color: var(--warn); }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--code-bg); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { white-space: nowrap; font-weight: 600; }
+  ol.next { padding-left: 22px; }
+  ol.next li { margin-bottom: 10px; }
+  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Ramadan 1448 · Umrah Campaign</div>
+  <h1>WhatsApp, Messenger ও Phone lead automation plan</h1>
+  <p class="lede">Ads থেকে আসা সব client এক জায়গায় আনা, দ্রুত reply দেওয়া আর booking পর্যন্ত follow-up করার পুরো system।</p>
+</header>
+
+<div class="callout">
+  <strong>সিদ্ধান্ত: হ্যাঁ, করা উচিত।</strong> Ramadan-এ ads চালালে একসাথে শত শত message আর call আসবে। Manual handle করলে অনেক lead হারাবেন, কারণ যে আগে reply দেয় Umrah client সাধারণত তার কাছেই যায়। তবে সব এক সাথে না বানিয়ে ধাপে ধাপে করুন।
+</div>
+
+<h2>পুরো flow</h2>
+<div class="flow">
+  <div class="step">
+    <b>১. Lead আসে</b>
+    <div class="sources" style="margin-top:8px">
+      <span class="chip">Click-to-WhatsApp ad</span>
+      <span class="chip">Click-to-Messenger ad</span>
+      <span class="chip">Call ad / phone number</span>
+    </div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="step"><b>২. Shared Inbox:</b> সব channel এক জায়গায়, পুরো team একসাথে দেখতে পায়</div>
+  <div class="arrow">↓</div>
+  <div class="step"><b>৩. Auto-reply bot (Bangla):</b> ৪-৫টা প্রশ্ন: কোন package? কবে যাবেন? কতজন? budget কত? কোন জেলা?</div>
+  <div class="arrow">↓</div>
+  <div class="step"><b>৪. Agency software-এ lead ঢোকে</b> (webhook দিয়ে) এবং একজন agent-কে assign হয় (round-robin)</div>
+  <div class="arrow">↓</div>
+  <div class="step"><b>৫. Booking পর্যন্ত:</b> follow-up sequence → booking → passport/document collect → payment reminder → departure info → ফেরার পর review/referral</div>
+</div>
+
+<h2>৩টা অংশ</h2>
+<div class="grid">
+  <div class="card">
+    <h3>১. WhatsApp</h3>
+    <ul>
+      <li>শুধু <strong>official WhatsApp Business Platform (Cloud API)</strong> নিন, একটা BSP-এর মাধ্যমে, যেমন respond.io, WATI বা AiSensy।</li>
+      <li>"WhatsApp Web bot" বা bulk sender tool <strong>একদম না</strong>। Ramadan-এর মাঝখানে number ban হলে পুরো campaign শেষ।</li>
+      <li>Click-to-WhatsApp ad থেকে কেউ message দিলে ৭২ ঘণ্টা free-তে reply দেওয়া যায়। Template আর broadcast-এ টাকা লাগে। Meta-র pricing বদলায়, setup-এর আগে current rate দেখে নিন।</li>
+      <li>পুরনো client-দের broadcast করতে template approve করাতে হবে, আর তাদের opt-in লাগবে।</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>২. Messenger</h3>
+    <ul>
+      <li>একই inbox-এ connect করুন।</li>
+      <li>Messenger-এ ২৪ ঘণ্টার মধ্যে reply দিতে হয়, এর পরে promotional message পাঠানো যায় না।</li>
+      <li>তাই bot-এর প্রথম কাজ: client-এর <strong>WhatsApp number চাওয়া</strong>। এরপর follow-up WhatsApp-এ চলবে।</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>৩. Phone</h3>
+    <ul>
+      <li>BTRC-licensed local provider-এর <strong>hosted PBX / IP telephony</strong> নিন। Twilio-র মতো বিদেশি service-এ Bangladesh-এর local number ঠিকমতো পাওয়া যায় না।</li>
+      <li>যা লাগবে: IVR ("Umrah-র জন্য ১ চাপুন"), একসাথে কয়েকজন agent-এর phone-এ ring, call recording, missed call log।</li>
+      <li>সবচেয়ে কাজের automation: <strong>missed call হলে auto WhatsApp message</strong>, যেমন "আমরা ১০ মিনিটে call back করছি, এখানে package list দেখুন…"।</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Build নাকি buy?</h2>
+<div class="card">
+  <p><strong>পরামর্শ: inbox কিনে নিন, integration নিজে বানান।</strong></p>
+  <ul>
+    <li>WhatsApp, Messenger, Instagram একসাথে handle করার inbox নিজে বানাতে কয়েক মাস লাগবে, আর Ramadan শুরু হচ্ছে ~৮ Feb ২০২৭। এটা respond.io বা এরকম কোনো tool থেকে নিন।</li>
+    <li>নিজের agency software-এর সাথে webhook দিয়ে connect করুন, যাতে lead, booking আর payment status সব আপনার system-এই থাকে।</li>
+    <li>পরে Bangla FAQ-এর জন্য AI bot যোগ করা যায় (দাম, visa, hotel distance)। কঠিন প্রশ্ন এলে conversation মানুষের কাছে যাবে।</li>
+  </ul>
+</div>
+
+<h2>Timeline</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>সময়</th><th>কাজ</th></tr></thead>
+  <tbody>
+    <tr><td>Oct শেষ – Nov মাঝামাঝি</td><td>WhatsApp API number verify, inbox setup, Messenger connect, PBX নেওয়া</td></tr>
+    <tr><td>Nov</td><td>Qualification bot, templates approve, software webhook, missed-call → WhatsApp</td></tr>
+    <tr><td>Dec</td><td>পুরনো client-দের broadcast, ছোট budget-এ ad test</td></tr>
+    <tr><td>Jan – Feb</td><td>পুরো ad budget চালু, follow-up sequences চালু</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="callout">Meta business verification আর template approval-এ কয়েক সপ্তাহ লাগতে পারে। তাই number verification <strong>এখনই</strong> শুরু করুন।</div>
+
+<h2>Risk</h2>
+<div class="callout warn">
+  <ul style="margin:0">
+    <li><strong>Quality rating:</strong> একটা number-এ অনেকে block বা report করলে rating নেমে যায় এবং message limit কমে যায়। Broadcast বেছে বেছে পাঠান।</li>
+    <li><strong>মানুষ লাগবেই:</strong> automation reply দিতে পারে, কিন্তু booking close করে মানুষ। Ramadan-এর আগে কমপক্ষে ২-৩ জন trained agent রাখুন।</li>
+  </ul>
+</div>
+
+<h2>পরের কাজ</h2>
+<ol class="next">
+  <li>Bot-এর পুরো Bangla conversation script, qualification প্রশ্ন আর follow-up message।</li>
+  <li>WhatsApp template message লেখা (approval পাওয়ার মতো করে)।</li>
+  <li>Agency software-এ lead আনার webhook integration (software-এর code বা tech stack লাগবে)।</li>
+</ol>
+
+<footer>প্রস্তুত: ১৪ অক্টোবর ২০২৬ · Ramadan 1448 Umrah campaign-এর অংশ</footer>
+
+</div>
+</body>
+</html>
